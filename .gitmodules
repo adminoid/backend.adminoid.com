@@ -1,0 +1,3 @@
+[submodule "public/frontend.adminoid.com"]
+	path = public/frontend.adminoid.com
+	url = https://github.com/adminoid/frontend.adminoid.com.git

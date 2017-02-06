@@ -12,5 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.index');
+});
+
+Route::get('/process.html', function () {
+    return view('process');
+});
+
+Route::get('/price.html', function () {
+    return view('price');
+});
+
+Route::get('/portfolio.html', function () {
+    return view('portfolio');
+});
+
+Route::get('/tools.html', function () {
+    return view('tools');
 });
