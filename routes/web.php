@@ -16,17 +16,17 @@ Route::get('/', function () {
 });
 
 Route::get('/process.html', function () {
-    return view('process');
+    return view('pages.process');
 });
 
 Route::get('/price.html', function () {
-    return view('price');
+    return view('pages.price');
 });
 
 Route::get('/portfolio.html', function () {
-    return view('portfolio');
+    return view('pages.portfolio');
 });
 
 Route::get('/tools.html', function () {
-    return view('tools');
+    return view('pages.tools');
 });
