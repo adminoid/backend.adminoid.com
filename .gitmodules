@@ -1,3 +1,6 @@
 [submodule "frontend.adminoid.com"]
 	path = frontend.adminoid.com
 	url = https://github.com/adminoid/frontend.adminoid.com.git
+[submodule "laradock"]
+	path = laradock
+	url = https://github.com/Laradock/laradock.git
