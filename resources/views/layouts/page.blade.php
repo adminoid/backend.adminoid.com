@@ -7,44 +7,47 @@
 
     <title>adminoid.ru - сайты как искусство</title>
 
-    <link rel="apple-touch-icon" sizes="57x57" href="/frontend.adminoid.com/dist/static/favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/frontend.adminoid.com/dist/static/favicons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/frontend.adminoid.com/dist/static/favicons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/frontend.adminoid.com/dist/static/favicons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/frontend.adminoid.com/dist/static/favicons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/frontend.adminoid.com/dist/static/favicons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/frontend.adminoid.com/dist/static/favicons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/frontend.adminoid.com/dist/static/favicons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/frontend.adminoid.com/dist/static/favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/frontend.adminoid.com/dist/static/favicons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/frontend.adminoid.com/dist/static/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/frontend.adminoid.com/dist/static/favicons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/frontend.adminoid.com/dist/static/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/frontend.adminoid.com/dist/static/favicons/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="/static/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/static/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicons/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/frontend.adminoid.com/dist/static/favicons/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="/static/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <link href=/frontend.adminoid.com/dist/static/css/app.3dfdce89b8a388271699030f1e4e60e7.css rel=stylesheet>
+    <link href=/static/css/app.3dfdce89b8a388271699030f1e4e60e7.css rel=stylesheet>
 
 </head>
 <body>
 
 <div class="ui right sidebar inverted red vertical menu active" id="top-menu-sidebar">
     <a href="/" class="item">Главная</a>
-    <a href="/process.html" class="item">Процесс</a>
-    <a href="/price.html" class="item active">Цена</a>
-    <a href="/portfolio.html" class="item">Портфолио</a>
+    <a href="#" class="item">Услуги</a>
     <a href="/tools.html" class="item">Инструменты</a>
+    <a href="/price.html" class="item active">Цена</a>
+    <a href="/process.html" class="item">Процесс</a>
+    <a href="/portfolio.html" class="item">Портфолио</a>
+    <a href="#" class="item">Отзывы</a>
+    <a href="#" class="item">Крысам</a>
 </div>
 
-<div id="app" class="pusher ">
+<div id="app" class="pusher">
     <div class="page-content">
 
         <top-menu inline-template>
             <div class="ui fixed menu" id="top-menu">
                 <div class="ui grid container">
-                    <div class="four wide column">
+                    <div class="five wide column">
                         <div id="header-logo" class="header item">
                             <a href="/">
                                 <svg id="header-logo-svg" width="219px" height="53px" viewBox="0 0 219 53" version="1.1"
@@ -223,22 +226,28 @@
                         </div>
                     </div>
 
-                    <div class="twelve wide column computer widescreen largescreen only">
-                        <div class="ui five item menu">
-                            <a href="/" class="item">
-                                Главная
+                    <div class="eleven wide column computer widescreen largescreen only">
+                        <div class="ui six item menu">
+                            <a href="" class="item">
+                                Услуги
                             </a>
-                            <a href="/process.html" class="item">
-                                Процесс
+                            <a href="/tools.html" class="item">
+                                Инструменты
                             </a>
                             <a href="/price.html" class="item active">
                                 Цена
                             </a>
+                            <a href="/process.html" class="item">
+                                Процесс
+                            </a>
                             <a href="/portfolio.html" class="item">
                                 Портфолио
                             </a>
-                            <a href="/tools.html" class="item">
-                                Инструменты
+                            <a href="" class="item">
+                                Отзывы
+                            </a>
+                            <a href="" class="item">
+                                Крысам
                             </a>
                         </div>
                     </div>
@@ -256,7 +265,7 @@
             <div class="ui middle aligned four column grid">
                 <div class="five wide column">
                     <div class="ui middle aligned container">
-                        <img src="/frontend.adminoid.com/dist/static/img/temp/yandex-metrika.png" alt="">
+                        <img src="/static/img/temp/yandex-metrika.png" alt="">
                     </div>
                 </div>
                 <div class="two wide column">
@@ -272,7 +281,7 @@
                     </div>
                 </div>
                 <div class="seven wide column right aligned">
-                    <img src="/frontend.adminoid.com/dist/static/img/adminoid/footer/footer-logo.svg" alt="">
+                    <img src="/static/img/adminoid/footer/footer-logo.svg" alt="">
                 </div>
             </div>
         </div>
@@ -280,9 +289,9 @@
 </div>
 
 <!-- JavaScripts -->
-<script type=text/javascript src=/frontend.adminoid.com/dist/static/js/manifest.5ae6e028039fa1ae78b8.js></script>
-<script type=text/javascript src=/frontend.adminoid.com/dist/static/js/vendor.31f109e51a0b8c304b29.js></script>
-<script type=text/javascript src=/frontend.adminoid.com/dist/static/js/app.09e84db7f7058a24da10.js></script>
+<script type=text/javascript src=/static/js/manifest.5ae6e028039fa1ae78b8.js></script>
+<script type=text/javascript src=/static/js/vendor.31f109e51a0b8c304b29.js></script>
+<script type=text/javascript src=/static/js/app.09e84db7f7058a24da10.js></script>
 
 </body>
 </html>

@@ -16,6 +16,9 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
+
+        $this->assertEquals('ru', $this->app->getLocale());
+
         $response = $this->get('/');
 
         $response->assertStatus(200);
