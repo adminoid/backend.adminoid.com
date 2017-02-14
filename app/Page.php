@@ -1,4 +1,7 @@
 <?php
+
+namespace App;
+
 use Baum\Node;
 
 /**
@@ -13,6 +16,11 @@ class Page extends Node
      * @var string
      */
     protected $table = 'pages';
+
+    public function page_type()
+    {
+        return $this->belongsTo('App\PageType', 'type_id', 'id');
+    }
 
     //////////////////////////////////////////////////////////////////////////////
 

@@ -38,7 +38,6 @@
     <a href="/process.html" class="item">Процесс</a>
     <a href="/portfolio.html" class="item">Портфолио</a>
     <a href="#" class="item">Отзывы</a>
-    <a href="#" class="item">Крысам</a>
 </div>
 
 <div id="app" class="pusher">
@@ -245,9 +244,6 @@
                             </a>
                             <a href="" class="item">
                                 Отзывы
-                            </a>
-                            <a href="" class="item">
-                                Крысам
                             </a>
                         </div>
                     </div>

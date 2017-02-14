@@ -22,3 +22,19 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+// Page
+$factory->define(App\Page::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(6, true),
+        'content' => $faker->paragraph(3, true),
+        'url' => $faker->sentence(1, true),
+    ];
+});
+
+// PageType
+$factory->define(App\PageType::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->sentence(1, true),
+    ];
+});
