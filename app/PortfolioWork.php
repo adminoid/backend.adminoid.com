@@ -20,6 +20,11 @@ class PortfolioWork extends Model
 
     public function portfolio_category()
     {
-        return $this->belongsTo('App\PortfolioWork', 'category_id', 'id');
+        return $this->belongsTo('App\PortfolioCategory', 'category_id', 'id');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Tag', 'taggable');
     }
 }

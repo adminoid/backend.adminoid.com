@@ -11,7 +11,7 @@ use App;
 class RelationshipsTest extends TestCase
 {
 
-//    use DatabaseTransactions;
+    use DatabaseTransactions;
 //    use DatabaseMigrations;
 
 //    /**
@@ -74,15 +74,12 @@ class RelationshipsTest extends TestCase
             $portfolioWork->images()->saveMany($images);
             $this->assertEquals($portfolioWork->images()->count(), 2);
         });
-    }
 
-    public function testImagesPortfolioWorksRelation()
-    {
         $images = factory(App\Image::class, 2)->create();
-        $portfolioWorks = factory(App\Page::class, 3)->create();
+        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
         $images->each(function ($image) use ($portfolioWorks) {
-            $image->pages()->saveMany($portfolioWorks);
-            $this->assertEquals($image->pages()->count(), 3);
+            $image->portfolio_works()->saveMany($portfolioWorks);
+            $this->assertEquals($image->portfolio_works()->count(), 3);
         });
     }
 
@@ -136,10 +133,27 @@ class RelationshipsTest extends TestCase
         $portfolioCategory = factory(App\PortfolioCategory::class)->make();
         $portfolioCategory->save();
         $portfolioCategory->portfolio_works()->saveMany($portfolioWorks);
-        $portfolioCategory->portfolio_works()->get()->each(function ($portfolioWork) {
+        $portfolioCategory->portfolio_works()->get()->each(function ($portfolioWork) use ($portfolioCategory) {
             $this->assertTrue(strlen($portfolioWork->title) > 0 && gettype($portfolioWork) == 'object');
-            $portfolioCategoryMustBeOne = $portfolioWork->portfolio_category()->get()->count();
-            $this->assertTrue($portfolioCategoryMustBeOne == 1);
+            $this->assertEquals($portfolioWork->portfolio_category->name, $portfolioCategory->name);
         });
     }
+
+    public function testTagsPortfolioWorksRelation()
+    {
+        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
+        $tags = factory(App\Tag::class, 2)->create();
+        $portfolioWorks->each(function ($portfolioWork) use ($tags) {
+            $portfolioWork->tags()->saveMany($tags);
+            $this->assertEquals($portfolioWork->tags()->count(), 2);
+        });
+
+        $tags = factory(App\Tag::class, 2)->create();
+        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
+        $tags->each(function ($tag) use ($portfolioWorks) {
+            $tag->portfolio_works()->saveMany($portfolioWorks);
+            $this->assertEquals($tag->portfolio_works()->count(), 3);
+        });
+    }
+
 }

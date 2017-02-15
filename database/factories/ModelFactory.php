@@ -78,3 +78,11 @@ $factory->define(App\PortfolioCategory::class, function (Faker\Generator $faker)
         'name' => $faker->sentence(1, true),
     ];
 });
+
+// Tag
+$factory->define(App\Tag::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->sentence(rand(2,4), true),
+        'icon' => $faker->sentence(1, true),
+    ];
+});
