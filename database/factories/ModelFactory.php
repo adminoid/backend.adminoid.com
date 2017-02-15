@@ -71,3 +71,10 @@ $factory->define(App\Review::class, function (Faker\Generator $faker) {
         'content' => $faker->paragraph(3, true),
     ];
 });
+
+// PortfolioCategory
+$factory->define(App\PortfolioCategory::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->sentence(1, true),
+    ];
+});

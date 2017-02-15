@@ -129,4 +129,17 @@ class RelationshipsTest extends TestCase
         $portfolioWork2->review()->save($review2);
         $this->assertEquals($review2->content, $portfolioWork2->review->content);
     }
+
+    public function testPortfolioWorksPortfolioCategoriesRelation()
+    {
+        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
+        $portfolioCategory = factory(App\PortfolioCategory::class)->make();
+        $portfolioCategory->save();
+        $portfolioCategory->portfolio_works()->saveMany($portfolioWorks);
+        $portfolioCategory->portfolio_works()->get()->each(function ($portfolioWork) {
+            $this->assertTrue(strlen($portfolioWork->title) > 0 && gettype($portfolioWork) == 'object');
+            $portfolioCategoryMustBeOne = $portfolioWork->portfolio_category()->get()->count();
+            $this->assertTrue($portfolioCategoryMustBeOne == 1);
+        });
+    }
 }
