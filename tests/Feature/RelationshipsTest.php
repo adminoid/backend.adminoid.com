@@ -23,6 +23,16 @@ class RelationshipsTest extends TestCase
 //        $this->assertTrue(true);
 //    }
 
+    public function testPagePagesRelation()
+    {
+        $root = App\Page::create(['title' => 'Root category']);
+        $root->children()->create(['title' => 'Child 1']);
+        $child2 = App\Page::create(['title' => 'Child 2']);
+        $child2->makeChildOf($root);
+        $this->assertEquals($root->children()->count(), 2);
+        $this->assertEquals($child2->first()->title, 'Root category');
+    }
+
     public function testPageAndPageTypeRelation()
     {
         $pageType = factory(App\PageType::class)->create();
