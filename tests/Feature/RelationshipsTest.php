@@ -3,13 +3,16 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+//use Illuminate\Foundation\Testing\WithoutMiddleware;
+//use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App;
 
 class RelationshipsTest extends TestCase
 {
+
+    use DatabaseTransactions;
+
     /**
      * A basic test example.
      *
@@ -26,7 +29,7 @@ class RelationshipsTest extends TestCase
         $pages = factory(App\Page::class, 3)->create();
         $pageType->pages()->saveMany($pages);
         $pageType->pages()->get()->each(function ($page) {
-            $this->assertTrue(strlen($page->title) > 0 && gettype($page) == "object");
+            $this->assertTrue(strlen($page->title) > 0 && gettype($page) == 'object');
             $pageTypeMustBeOne = $page->page_type()->get()->count();
             $this->assertTrue($pageTypeMustBeOne == 1);
         });
