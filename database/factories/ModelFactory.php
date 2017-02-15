@@ -56,3 +56,11 @@ $factory->define(App\Image::class, function (Faker\Generator $faker) {
         'alt' => $faker->sentence(3, true),
     ];
 });
+
+// PortfolioWork
+$factory->define(App\PortfolioWork::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(3, true),
+        'description' => $faker->sentence(rand(3,7), true),
+    ];
+});

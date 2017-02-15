@@ -64,4 +64,24 @@ class RelationshipsTest extends TestCase
             $this->assertEquals($image->pages()->count(), 3);
         });
     }
+
+    public function testPortfolioWorksImagesRelation()
+    {
+        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
+        $images = factory(App\Image::class, 2)->create();
+        $portfolioWorks->each(function ($portfolioWork) use ($images) {
+            $portfolioWork->images()->saveMany($images);
+            $this->assertEquals($portfolioWork->images()->count(), 2);
+        });
+    }
+
+    public function testImagesPortfolioWorksRelation()
+    {
+        $images = factory(App\Image::class, 2)->create();
+        $portfolioWorks = factory(App\Page::class, 3)->create();
+        $images->each(function ($image) use ($portfolioWorks) {
+            $image->pages()->saveMany($portfolioWorks);
+            $this->assertEquals($image->pages()->count(), 3);
+        });
+    }
 }
