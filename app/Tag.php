@@ -11,4 +11,9 @@ class Tag extends Model
     {
         return $this->morphedByMany('App\PortfolioWork', 'taggable');
     }
+
+    public function news()
+    {
+        return $this->morphedByMany('App\News', 'taggable');
+    }
 }

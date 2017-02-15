@@ -86,3 +86,11 @@ $factory->define(App\Tag::class, function (Faker\Generator $faker) {
         'icon' => $faker->sentence(1, true),
     ];
 });
+
+// News
+$factory->define(App\News::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(3, true),
+        'content' => $faker->paragraph(3, true),
+    ];
+});

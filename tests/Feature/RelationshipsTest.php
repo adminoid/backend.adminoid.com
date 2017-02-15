@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-//use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App;
@@ -68,19 +68,17 @@ class RelationshipsTest extends TestCase
 
     public function testPortfolioWorksImagesRelation()
     {
-        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
+        $portfolioWork = factory(App\PortfolioWork::class)->make();
+        $portfolioWork->save();
         $images = factory(App\Image::class, 2)->create();
-        $portfolioWorks->each(function ($portfolioWork) use ($images) {
-            $portfolioWork->images()->saveMany($images);
-            $this->assertEquals($portfolioWork->images()->count(), 2);
-        });
+        $portfolioWork->images()->saveMany($images);
+        $this->assertEquals($portfolioWork->images()->count(), 2);
 
-        $images = factory(App\Image::class, 2)->create();
+        $image = factory(App\Image::class)->make();
+        $image->save();
         $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
-        $images->each(function ($image) use ($portfolioWorks) {
-            $image->portfolio_works()->saveMany($portfolioWorks);
-            $this->assertEquals($image->portfolio_works()->count(), 3);
-        });
+        $image->portfolio_works()->saveMany($portfolioWorks);
+        $this->assertEquals($image->portfolio_works()->count(), 3);
     }
 
     public function testReviewsPortfolioWorksRelations()
@@ -141,19 +139,50 @@ class RelationshipsTest extends TestCase
 
     public function testTagsPortfolioWorksRelation()
     {
-        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
+        $portfolioWork = factory(App\PortfolioWork::class)->make();
+        $portfolioWork->save();
         $tags = factory(App\Tag::class, 2)->create();
-        $portfolioWorks->each(function ($portfolioWork) use ($tags) {
-            $portfolioWork->tags()->saveMany($tags);
-            $this->assertEquals($portfolioWork->tags()->count(), 2);
-        });
+        $portfolioWork->tags()->saveMany($tags);
+        $this->assertEquals($portfolioWork->tags()->count(), 2);
 
-        $tags = factory(App\Tag::class, 2)->create();
+        $tag = factory(App\Tag::class)->make();
+        $tag->save();
         $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
-        $tags->each(function ($tag) use ($portfolioWorks) {
-            $tag->portfolio_works()->saveMany($portfolioWorks);
-            $this->assertEquals($tag->portfolio_works()->count(), 3);
-        });
+        $tag->portfolio_works()->saveMany($portfolioWorks);
+        $this->assertEquals($tag->portfolio_works()->count(), 3);
+    }
+
+    public function testTagsNewsRelation()
+    {
+        $newsItem = factory(App\News::class)->make();
+        $newsItem->save();
+        $tags = factory(App\Tag::class, 2)->create();
+        $newsItem->tags()->saveMany($tags);
+        $this->assertEquals($newsItem->tags()->count(), 2);
+
+        $tag = factory(App\Tag::class)->make();
+        $tag->save();
+        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
+        $tag->portfolio_works()->saveMany($portfolioWorks);
+        $this->assertEquals($tag->portfolio_works()->count(), 3);
+    }
+
+    public function testNewsImagesRelation()
+    {
+
+//        $this->markTestSkipped('must be revisited.');
+
+        $newsItem = factory(App\News::class)->make();
+        $newsItem->save();
+        $images = factory(App\Image::class, 2)->create();
+        $newsItem->images()->saveMany($images);
+        $this->assertEquals($newsItem->images()->count(), 2);
+
+        $tag = factory(App\Tag::class)->make();
+        $tag->save();
+        $newsItems = factory(App\News::class, 3)->create();
+        $tag->news()->saveMany($newsItems);
+        $this->assertEquals($tag->news()->count(), 3);
     }
 
 }
