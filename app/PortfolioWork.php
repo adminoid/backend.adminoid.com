@@ -10,4 +10,9 @@ class PortfolioWork extends Model
     {
         return $this->morphToMany('App\Image', 'imageable');
     }
+
+    public function review()
+    {
+        return $this->hasOne('App\Review', 'portfolio_work_id', 'id');
+    }
 }

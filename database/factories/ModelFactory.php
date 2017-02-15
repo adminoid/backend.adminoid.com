@@ -64,3 +64,10 @@ $factory->define(App\PortfolioWork::class, function (Faker\Generator $faker) {
         'description' => $faker->sentence(rand(3,7), true),
     ];
 });
+
+// Review
+$factory->define(App\Review::class, function (Faker\Generator $faker) {
+    return [
+        'content' => $faker->paragraph(3, true),
+    ];
+});

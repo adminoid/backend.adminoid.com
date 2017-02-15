@@ -4,14 +4,15 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 //use Illuminate\Foundation\Testing\WithoutMiddleware;
-//use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App;
 
 class RelationshipsTest extends TestCase
 {
 
-    use DatabaseTransactions;
+//    use DatabaseTransactions;
+//    use DatabaseMigrations;
 
 //    /**
 //     * A basic test example.
@@ -83,5 +84,49 @@ class RelationshipsTest extends TestCase
             $image->pages()->saveMany($portfolioWorks);
             $this->assertEquals($image->pages()->count(), 3);
         });
+    }
+
+    public function testReviewsPortfolioWorksRelations()
+    {
+        // In example: phone = Review, user = PortfolioWork
+
+        // It's work!
+//        $portfolioWork = App\Review::find(1)->portfolio_work;
+//        var_dump($portfolioWork->title);
+
+        // It's work too
+//        $review = App\PortfolioWork::find(7)->review;
+//        var_dump($review->content);
+
+        // isn't work
+//        $review1->portfolio_work()->save($portfolioWork1);
+
+        // It's work
+//        $portfolioWork1 = factory(App\PortfolioWork::class)->make();
+//        $portfolioWork1->save();
+//        $review1 = factory(App\Review::class)->make();
+//        $review1->portfolio_work()->associate($portfolioWork1);
+//        $review1->save();
+
+        // It's work
+//        $review2 = factory(App\Review::class)->make();
+//        $review2->save();
+//        $portfolioWork2 = factory(App\PortfolioWork::class)->make();
+//        $portfolioWork2->save();
+//        $portfolioWork2->review()->save($review2);
+
+        $portfolioWork1 = factory(App\PortfolioWork::class)->make();
+        $portfolioWork1->save();
+        $review1 = factory(App\Review::class)->make();
+        $review1->portfolio_work()->associate($portfolioWork1);
+        $review1->save();
+        $this->assertEquals($portfolioWork1->title, $review1->portfolio_work->title);
+
+        $review2 = factory(App\Review::class)->make();
+        $review2->save();
+        $portfolioWork2 = factory(App\PortfolioWork::class)->make();
+        $portfolioWork2->save();
+        $portfolioWork2->review()->save($review2);
+        $this->assertEquals($review2->content, $portfolioWork2->review->content);
     }
 }
