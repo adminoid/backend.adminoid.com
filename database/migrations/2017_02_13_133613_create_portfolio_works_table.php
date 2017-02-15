@@ -16,11 +16,11 @@ class CreatePortfolioWorksTable extends Migration
         Schema::create('portfolio_works', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->text('description');
-            $table->integer('sort_order_id');
-            $table->integer('category_id');
-            $table->string('external_url');
-            $table->string('custom_date');
+            $table->text('description')->nullable();
+            $table->integer('sort_order_id')->nullable();
+            $table->integer('category_id')->index();
+            $table->string('external_url')->nullable();
+            $table->string('custom_date')->nullable();
             $table->timestamps();
         });
     }

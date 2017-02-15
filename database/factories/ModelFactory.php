@@ -38,3 +38,13 @@ $factory->define(App\PageType::class, function (Faker\Generator $faker) {
         'name' => $faker->sentence(1, true),
     ];
 });
+
+// Feedback
+$factory->define(App\Feedback::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(1, true),
+        'content' => $faker->paragraph(3, true),
+        'email' => $faker->email,
+        'phone' => $faker->phoneNumber,
+    ];
+});
