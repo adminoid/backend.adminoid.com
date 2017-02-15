@@ -42,9 +42,17 @@ $factory->define(App\PageType::class, function (Faker\Generator $faker) {
 // Feedback
 $factory->define(App\Feedback::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->sentence(1, true),
+        'title' => $faker->sentence(3, true),
         'content' => $faker->paragraph(3, true),
         'email' => $faker->email,
         'phone' => $faker->phoneNumber,
+    ];
+});
+
+// Image
+$factory->define(App\Image::class, function (Faker\Generator $faker) {
+    return [
+        'url' => $faker->sentence(1, true),
+        'alt' => $faker->sentence(3, true),
     ];
 });

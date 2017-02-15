@@ -22,6 +22,11 @@ class Page extends Node
         return $this->belongsTo('App\PageType', 'type_id', 'id');
     }
 
+    public function images()
+    {
+        return $this->morphToMany('App\Image', 'imageable');
+    }
+
     //////////////////////////////////////////////////////////////////////////////
 
     //
