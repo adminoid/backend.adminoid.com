@@ -18,10 +18,10 @@ class PortfolioWork extends Model
         return $this->hasOne('App\Review', 'portfolio_work_id', 'id');
     }
 
-    public function portfolio_category()
-    {
-        return $this->belongsTo('App\PortfolioCategory', 'category_id', 'id');
-    }
+//    public function portfolio_category()
+//    {
+//        return $this->belongsTo('App\PortfolioCategory', 'category_id', 'id');
+//    }
 
     public function tags()
     {

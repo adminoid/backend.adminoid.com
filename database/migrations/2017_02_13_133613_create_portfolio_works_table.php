@@ -18,6 +18,7 @@ class CreatePortfolioWorksTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->integer('sort_order_id')->nullable();
+            $table->enum('priority_level', ['high', 'middle', 'low'])->default('low');
             $table->integer('category_id')->nullable()->index();
             $table->string('external_url')->nullable();
             $table->string('custom_date')->nullable();

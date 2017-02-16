@@ -1,5 +1,7 @@
 @extends('layouts.page')
 
+@section('title', 'Сайт надо? Очень красивый')
+
 @section('content')
     <div class="ui page container" id="index">
         <div class="ui stackable grid" id="intro">

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>adminoid.ru - сайты как искусство</title>
+    <title>Сайты как искусство - @yield('title')</title>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/static/favicons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/static/favicons/apple-icon-60x60.png">
@@ -31,13 +31,13 @@
 <body>
 
 <div class="ui right sidebar inverted red vertical menu active" id="top-menu-sidebar">
-    <a href="/" class="item">Главная</a>
-    <a href="#" class="item">Услуги</a>
-    <a href="/tools.html" class="item">Инструменты</a>
+    <a href="/" class="item">Главная</a>{{-- Добавить обо мне (сколько лет того, сего) и Перечень услуг--}}
     <a href="/price.html" class="item active">Цена</a>
+    <a href="/tools.html" class="item">Инструменты</a>
     <a href="/process.html" class="item">Процесс</a>
     <a href="/portfolio.html" class="item">Портфолио</a>
-    <a href="#" class="item">Отзывы</a>
+    <a href="/reviews.html" class="item">Отзывы</a>
+    <a href="/off.html" class="item">Прочь</a>
 </div>
 
 <div id="app" class="pusher">
@@ -227,14 +227,14 @@
 
                     <div class="eleven wide column computer widescreen largescreen only">
                         <div class="ui six item menu">
-                            <a href="" class="item">
-                                Услуги
+                            {{--<a href="/" class="item">--}}
+                               {{--Главная--}}
+                            {{--</a>--}}
+                            <a href="/price.html" class="item active">
+                                Цена
                             </a>
                             <a href="/tools.html" class="item">
                                 Инструменты
-                            </a>
-                            <a href="/price.html" class="item active">
-                                Цена
                             </a>
                             <a href="/process.html" class="item">
                                 Процесс
@@ -242,8 +242,11 @@
                             <a href="/portfolio.html" class="item">
                                 Портфолио
                             </a>
-                            <a href="" class="item">
+                            <a href="reviews.html" class="item">
                                 Отзывы
+                            </a>
+                            <a href="/off.html" class="item">
+                                Прочь
                             </a>
                         </div>
                     </div>
@@ -255,6 +258,7 @@
 
     </div>
 </div>
+
 <div class="page-footer pusher">
     <div class="ui inverted vertical footer segment">
         <div class="ui container">

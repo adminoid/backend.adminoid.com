@@ -26,6 +26,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 // Page
 $factory->define(App\Page::class, function (Faker\Generator $faker) {
     return [
+        'name' => $faker->sentence(1, true),
         'title' => $faker->sentence(6, true),
         'content' => $faker->paragraph(3, true),
         'url' => $faker->sentence(1, true),
