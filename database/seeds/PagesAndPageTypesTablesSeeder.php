@@ -32,7 +32,12 @@ class PagesAndPageTypesTablesSeeder extends Seeder
 //        $flight->name = $request->name;
 //        $flight->save();
 
-        $rootVirtualNode = App\Page::create(['name' => 'Root virtual node', 'show_in_main_menu' => false]);
+        $rootVirtualNode = App\Page::create(
+            [
+                'name_ru' => 'Root virtual node',
+                'show_in_main_menu' => false
+            ]
+        );
 
         $pageType = App\PageType::create(
             ['name' => 'Landing']
@@ -40,51 +45,65 @@ class PagesAndPageTypesTablesSeeder extends Seeder
 
         $pages = [
             [
-                'name' => 'Главная',
-                'title' => 'Сайт надо? Очень красивый!',
+                'name_ru' => 'Главная',
+                'name_en' => 'Main',
+                'title_ru' => 'Сайт надо? Очень красивый!',
+                'title_en' => 'The site should be? Very beautiful!',
                 'template' => 'pages.index',
                 'url' => 'index',
                 'type_id' => $pageType->id,
                 'show_in_main_menu' => false,
             ],
             [
-                'name' => 'Цена',
-                'title' => 'Выгодная цена за фильтрованный концентрат',
+                'name_ru' => 'Цена',
+                'name_en' => 'Price',
+                'title_ru' => 'Выгодная цена за фильтрованный концентрат',
+                'title_en' => 'Reasonable price for the filtered concentrate',
                 'template' => 'pages.price',
                 'url' => 'price',
                 'type_id' => $pageType->id,
             ],
             [
-                'name' => 'Инструменты',
-                'title' => 'Инструменты, которые я использую',
+                'name_ru' => 'Инструменты',
+                'name_en' => 'Tools',
+                'title_ru' => 'Инструменты, которые я использую',
+                'title_en' => 'Tools I use',
                 'template' => 'pages.tools',
                 'url' => 'tools',
                 'type_id' => $pageType->id,
             ],
             [
-                'name' => 'Главная',
-                'title' => 'Пример рабочего процесса',
-                'template' => 'pages.process',
-                'url' => 'process',
+                'name_ru' => 'Процесс',
+                'name_en' => 'Workflow',
+                'title_ru' => 'Пример рабочего процесса',
+                'title_en' => 'Example workflow',
+                'template' => 'pages.workflow',
+                'url' => 'workflow',
                 'type_id' => $pageType->id,
             ],
             [
-                'name' => 'Портфолио',
-                'title' => 'Портфолио',
+                'name_ru' => 'Портфолио',
+                'name_en' => 'Portfolio',
+                'title_ru' => 'Портфолио',
+                'title_en' => 'Portfolio',
                 'template' => 'pages.portfolio',
                 'url' => 'portfolio',
                 'type_id' => $pageType->id,
             ],
             [
-                'name' => 'Отзывы',
-                'title' => 'Отзывы',
+                'name_ru' => 'Отзывы',
+                'name_en' => 'Reviews',
+                'title_ru' => 'Отзывы',
+                'title_en' => 'Reviews',
                 'template' => 'pages.reviews',
                 'url' => 'reviews',
                 'type_id' => $pageType->id,
             ],
             [
-                'name' => 'Прочь',
-                'title' => 'Прочь',
+                'name_ru' => 'Прочь',
+                'name_en' => 'Off',
+                'title_ru' => 'Прочь',
+                'title_en' => 'Off',
                 'template' => 'pages.off',
                 'url' => 'off',
                 'active' => false,

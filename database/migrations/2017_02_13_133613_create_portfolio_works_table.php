@@ -15,8 +15,10 @@ class CreatePortfolioWorksTable extends Migration
     {
         Schema::create('portfolio_works', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('description')->nullable();
+            $table->string('title_ru');
+            $table->string('title_en')->nullable();
+            $table->text('description_ru')->nullable();
+            $table->text('description_en')->nullable();
             $table->integer('sort_order_id')->nullable();
             $table->enum('priority_level', ['high', 'middle', 'low'])->default('low');
             $table->integer('category_id')->nullable()->index();

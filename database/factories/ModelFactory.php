@@ -26,9 +26,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 // Page
 $factory->define(App\Page::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->sentence(1, true),
-        'title' => $faker->sentence(6, true),
-        'content' => $faker->paragraph(3, true),
+        'name_ru' => $faker->sentence(1, true),
+        'title_ru' => $faker->sentence(6, true),
+        'content_ru' => $faker->paragraph(3, true),
         'url' => $faker->sentence(1, true),
     ];
 });
@@ -54,29 +54,29 @@ $factory->define(App\Feedback::class, function (Faker\Generator $faker) {
 $factory->define(App\Image::class, function (Faker\Generator $faker) {
     return [
         'url' => $faker->sentence(1, true),
-        'alt' => $faker->sentence(3, true),
+        'alt_ru' => $faker->sentence(3, true),
     ];
 });
 
 // PortfolioWork
 $factory->define(App\PortfolioWork::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->sentence(3, true),
-        'description' => $faker->sentence(rand(3,7), true),
+        'title_ru' => $faker->sentence(3, true),
+        'description_ru' => $faker->sentence(rand(3,7), true),
     ];
 });
 
 // Review
 $factory->define(App\Review::class, function (Faker\Generator $faker) {
     return [
-        'content' => $faker->paragraph(3, true),
+        'content_ru' => $faker->paragraph(3, true),
     ];
 });
 
 // PortfolioCategory
 $factory->define(App\PortfolioCategory::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->sentence(1, true),
+        'name_ru' => $faker->sentence(1, true),
     ];
 });
 
@@ -91,7 +91,7 @@ $factory->define(App\Tag::class, function (Faker\Generator $faker) {
 // News
 $factory->define(App\News::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->sentence(3, true),
-        'content' => $faker->paragraph(3, true),
+        'title_ru' => $faker->sentence(3, true),
+        'content_ru' => $faker->paragraph(3, true),
     ];
 });

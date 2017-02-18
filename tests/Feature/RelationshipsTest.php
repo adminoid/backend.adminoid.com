@@ -26,12 +26,12 @@ class RelationshipsTest extends TestCase
 
     public function testPagePagesRelation()
     {
-        $root = App\Page::create(['name' => 'Root']);
-        $root->children()->create(['name' => 'Child 1']);
-        $child2 = App\Page::create(['name' => 'Child 2']);
+        $root = App\Page::create(['name_ru' => 'Root virtual node']);
+        $root->children()->create(['name_ru' => 'Child 1']);
+        $child2 = App\Page::create(['name_ru' => 'Child 2']);
         $child2->makeChildOf($root);
         $this->assertEquals($root->children()->count(), 2);
-        $this->assertEquals($child2->first()->name, 'Root');
+        $this->assertEquals($child2->first()->name_ru, 'Root virtual node');
     }
 
     public function testPageAndPageTypeRelation()
@@ -40,7 +40,7 @@ class RelationshipsTest extends TestCase
         $pages = factory(App\Page::class, 3)->create();
         $pageType->pages()->saveMany($pages);
         $pageType->pages()->get()->each(function ($page) {
-            $this->assertTrue(strlen($page->title) > 0 && gettype($page) == 'object');
+            $this->assertTrue(strlen($page->title_ru) > 0 && gettype($page) == 'object');
             $pageTypeMustBeOne = $page->page_type()->get()->count();
             $this->assertTrue($pageTypeMustBeOne == 1);
         });
@@ -115,7 +115,7 @@ class RelationshipsTest extends TestCase
         $review1 = factory(App\Review::class)->make();
         $review1->portfolio_work()->associate($portfolioWork1);
         $review1->save();
-        $this->assertEquals($portfolioWork1->title, $review1->portfolio_work->title);
+        $this->assertEquals($portfolioWork1->title_ru, $review1->portfolio_work->title_ru);
 
         $review2 = factory(App\Review::class)->make();
         $review2->save();
