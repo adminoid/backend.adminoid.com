@@ -14,24 +14,14 @@ class RelationshipsTest extends TestCase
     use DatabaseTransactions;
 //    use DatabaseMigrations;
 
-//    /**
-//     * A basic test example.
-//     *
-//     * @return void
-//     */
-//    public function testExample()
-//    {
-//        $this->assertTrue(true);
-//    }
-
     public function testPagePagesRelation()
     {
-        $root = App\Page::create(['name_ru' => 'Root virtual node']);
-        $root->children()->create(['name_ru' => 'Child 1']);
-        $child2 = App\Page::create(['name_ru' => 'Child 2']);
+        $root = App\Page::create(['url' => 'root-1']);
+        $root->children()->create(['url' => 'child-1']);
+        $child2 = App\Page::create(['url' => 'child-2']);
         $child2->makeChildOf($root);
         $this->assertEquals($root->children()->count(), 2);
-        $this->assertEquals($child2->first()->name_ru, 'Root virtual node');
+        $this->assertEquals($child2->parent()->first()->url, 'root-1');
     }
 
     public function testPageAndPageTypeRelation()

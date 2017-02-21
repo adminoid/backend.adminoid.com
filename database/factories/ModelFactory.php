@@ -53,7 +53,8 @@ $factory->define(App\Feedback::class, function (Faker\Generator $faker) {
 // Image
 $factory->define(App\Image::class, function (Faker\Generator $faker) {
     return [
-        'url' => $faker->sentence(1, true),
+        'name' => $faker->sentence(1, true),
+        'ext' => 'jpg',
         'alt_ru' => $faker->sentence(3, true),
     ];
 });

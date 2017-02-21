@@ -32,13 +32,6 @@ class PagesAndPageTypesTablesSeeder extends Seeder
 //        $flight->name = $request->name;
 //        $flight->save();
 
-        $rootVirtualNode = App\Page::create(
-            [
-                'name_ru' => 'Root virtual node',
-                'show_in_main_menu' => false
-            ]
-        );
-
         $pageType = App\PageType::create(
             ['name' => 'Landing']
         );
@@ -99,20 +92,10 @@ class PagesAndPageTypesTablesSeeder extends Seeder
                 'url' => 'reviews',
                 'type_id' => $pageType->id,
             ],
-            [
-                'name_ru' => 'Прочь',
-                'name_en' => 'Off',
-                'title_ru' => 'Прочь',
-                'title_en' => 'Off',
-                'template' => 'pages.off',
-                'url' => 'off',
-                'active' => false,
-                'type_id' => $pageType->id,
-            ],
         ];
 
         foreach ($pages as $page) {
-            $rootVirtualNode->children()->create($page);
+            App\Page::create($page);
         }
     }
 }
