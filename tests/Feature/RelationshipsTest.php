@@ -11,7 +11,7 @@ use App;
 class RelationshipsTest extends TestCase
 {
 
-    use DatabaseTransactions;
+//    use DatabaseTransactions;
 //    use DatabaseMigrations;
 
     public function testPagePagesRelation()
@@ -22,18 +22,6 @@ class RelationshipsTest extends TestCase
         $child2->makeChildOf($root);
         $this->assertEquals($root->children()->count(), 2);
         $this->assertEquals($child2->parent()->first()->url, 'root-1');
-    }
-
-    public function testPageAndPageTypeRelation()
-    {
-        $pageType = factory(App\PageType::class)->create();
-        $pages = factory(App\Page::class, 3)->create();
-        $pageType->pages()->saveMany($pages);
-        $pageType->pages()->get()->each(function ($page) {
-            $this->assertTrue(strlen($page->title_ru) > 0 && gettype($page) == 'object');
-            $pageTypeMustBeOne = $page->page_type()->get()->count();
-            $this->assertTrue($pageTypeMustBeOne == 1);
-        });
     }
 
     public function testPagesImagesRelation()
@@ -54,21 +42,6 @@ class RelationshipsTest extends TestCase
             $image->pages()->saveMany($pages);
             $this->assertEquals($image->pages()->count(), 3);
         });
-    }
-
-    public function testPortfolioWorksImagesRelation()
-    {
-        $portfolioWork = factory(App\PortfolioWork::class)->make();
-        $portfolioWork->save();
-        $images = factory(App\Image::class, 2)->create();
-        $portfolioWork->images()->saveMany($images);
-        $this->assertEquals($portfolioWork->images()->count(), 2);
-
-        $image = factory(App\Image::class)->make();
-        $image->save();
-        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
-        $image->portfolio_works()->saveMany($portfolioWorks);
-        $this->assertEquals($image->portfolio_works()->count(), 3);
     }
 
     public function testReviewsPortfolioWorksRelations()
@@ -115,64 +88,57 @@ class RelationshipsTest extends TestCase
         $this->assertEquals($review2->content, $portfolioWork2->review->content);
     }
 
-//    public function testPortfolioWorksPortfolioCategoriesRelation()
-//    {
-//        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
-//        $portfolioCategory = factory(App\PortfolioCategory::class)->make();
-//        $portfolioCategory->save();
-//        $portfolioCategory->portfolio_works()->saveMany($portfolioWorks);
-//        $portfolioCategory->portfolio_works()->get()->each(function ($portfolioWork) use ($portfolioCategory) {
-//            $this->assertTrue(strlen($portfolioWork->title) > 0 && gettype($portfolioWork) == 'object');
-//            $this->assertEquals($portfolioWork->portfolio_category->name, $portfolioCategory->name);
-//        });
-//    }
+    public function testTagsPagesRelation()
+    {
+        $page = factory(App\Page::class)->make();
+        $page->save();
+        $tags = factory(App\Tag::class, 2)->create();
+        $page->tags()->saveMany($tags);
+        $this->assertEquals($page->tags()->count(), 2);
 
-    public function testTagsPortfolioWorksRelation()
+        $tag = factory(App\Tag::class)->make();
+        $tag->save();
+        $pages = factory(App\Page::class, 3)->create();
+        $tag->pages()->saveMany($pages);
+        $this->assertEquals($tag->pages()->count(), 3);
+    }
+
+    public function testNewsPageRelation()
+    {
+        $newsItem = factory(App\News::class)->make();
+        $newsItem->save();
+        $page = factory(App\Page::class)->make();
+        $newsItem->page()->save($page);
+        $this->assertEquals($newsItem->page->url, $page->url);
+    }
+
+    public function testPageNewsRelation()
+    {
+        $newsItem = factory(App\News::class)->make();
+        $newsItem->save();
+        $page = factory(App\Page::class)->make();
+        $page->pageable()->associate($newsItem);
+        $page->save();
+        $this->assertEquals($page->pageable->title_ru, $newsItem->title_ru);
+    }
+
+    public function testPortfolioWorkPageRelation()
     {
         $portfolioWork = factory(App\PortfolioWork::class)->make();
         $portfolioWork->save();
-        $tags = factory(App\Tag::class, 2)->create();
-        $portfolioWork->tags()->saveMany($tags);
-        $this->assertEquals($portfolioWork->tags()->count(), 2);
-
-        $tag = factory(App\Tag::class)->make();
-        $tag->save();
-        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
-        $tag->portfolio_works()->saveMany($portfolioWorks);
-        $this->assertEquals($tag->portfolio_works()->count(), 3);
+        $page = factory(App\Page::class)->make();
+        $portfolioWork->page()->save($page);
+        $this->assertEquals($portfolioWork->page->url, $page->url);
     }
 
-    public function testTagsNewsRelation()
+    public function testPagePortfolioWorkRelation()
     {
-        $newsItem = factory(App\News::class)->make();
-        $newsItem->save();
-        $tags = factory(App\Tag::class, 2)->create();
-        $newsItem->tags()->saveMany($tags);
-        $this->assertEquals($newsItem->tags()->count(), 2);
-
-        $tag = factory(App\Tag::class)->make();
-        $tag->save();
-        $portfolioWorks = factory(App\PortfolioWork::class, 3)->create();
-        $tag->portfolio_works()->saveMany($portfolioWorks);
-        $this->assertEquals($tag->portfolio_works()->count(), 3);
-    }
-
-    public function testNewsImagesRelation()
-    {
-
-//        $this->markTestSkipped('must be revisited.');
-
-        $newsItem = factory(App\News::class)->make();
-        $newsItem->save();
-        $images = factory(App\Image::class, 2)->create();
-        $newsItem->images()->saveMany($images);
-        $this->assertEquals($newsItem->images()->count(), 2);
-
-        $tag = factory(App\Tag::class)->make();
-        $tag->save();
-        $newsItems = factory(App\News::class, 3)->create();
-        $tag->news()->saveMany($newsItems);
-        $this->assertEquals($tag->news()->count(), 3);
+        $portfolioWork = factory(App\News::class)->make();
+        $portfolioWork->save();
+        $page = factory(App\Page::class)->make();
+        $page->pageable()->associate($portfolioWork);
+        $page->save();
+        $this->assertEquals($page->pageable->title_ru, $portfolioWork->title_ru);
     }
 
 }

@@ -19,9 +19,4 @@ class Image extends Model
     {
         return $this->morphedByMany('App\Page', 'imageable');
     }
-
-    public function portfolio_works()
-    {
-        return $this->morphedByMany('App\PortfolioWork', 'imageable');
-    }
 }

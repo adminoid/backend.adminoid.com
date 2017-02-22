@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PagesAndPageTypesTablesSeeder extends Seeder
+class PagesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -32,10 +32,6 @@ class PagesAndPageTypesTablesSeeder extends Seeder
 //        $flight->name = $request->name;
 //        $flight->save();
 
-        $pageType = App\PageType::create(
-            ['name' => 'Landing']
-        );
-
         $pages = [
             [
                 'name_ru' => 'Главная',
@@ -44,7 +40,6 @@ class PagesAndPageTypesTablesSeeder extends Seeder
                 'title_en' => 'The site should be? Very beautiful!',
                 'template' => 'pages.index',
                 'url' => 'index',
-                'type_id' => $pageType->id,
                 'show_in_main_menu' => false,
             ],
             [
@@ -54,7 +49,6 @@ class PagesAndPageTypesTablesSeeder extends Seeder
                 'title_en' => 'Reasonable price for the filtered concentrate',
                 'template' => 'pages.price',
                 'url' => 'price',
-                'type_id' => $pageType->id,
             ],
             [
                 'name_ru' => 'Инструменты',
@@ -63,7 +57,6 @@ class PagesAndPageTypesTablesSeeder extends Seeder
                 'title_en' => 'Tools I use',
                 'template' => 'pages.tools',
                 'url' => 'tools',
-                'type_id' => $pageType->id,
             ],
             [
                 'name_ru' => 'Процесс',
@@ -72,7 +65,6 @@ class PagesAndPageTypesTablesSeeder extends Seeder
                 'title_en' => 'Example workflow',
                 'template' => 'pages.workflow',
                 'url' => 'workflow',
-                'type_id' => $pageType->id,
             ],
             [
                 'name_ru' => 'Портфолио',
@@ -81,7 +73,6 @@ class PagesAndPageTypesTablesSeeder extends Seeder
                 'title_en' => 'Portfolio',
                 'template' => 'pages.portfolio',
                 'url' => 'portfolio',
-                'type_id' => $pageType->id,
             ],
             [
                 'name_ru' => 'Отзывы',
@@ -90,7 +81,6 @@ class PagesAndPageTypesTablesSeeder extends Seeder
                 'title_en' => 'Reviews',
                 'template' => 'pages.reviews',
                 'url' => 'reviews',
-                'type_id' => $pageType->id,
             ],
         ];
 

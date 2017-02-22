@@ -7,13 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     //
-    public function portfolio_works()
+    public function pages()
     {
-        return $this->morphedByMany('App\PortfolioWork', 'taggable');
+        return $this->morphedByMany('App\Page', 'taggable');
     }
 
-    public function news()
-    {
-        return $this->morphedByMany('App\News', 'taggable');
-    }
 }

@@ -10,7 +10,7 @@ use App\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Artisan;
 
-class PageTest extends TestCase
+class PageImagesTest extends TestCase
 {
 
 //    use DatabaseTransactions;

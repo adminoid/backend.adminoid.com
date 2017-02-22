@@ -18,14 +18,19 @@ class Page extends Node
      */
     protected $table = 'pages';
 
-    public function page_type()
+    public function pageable()
     {
-        return $this->belongsTo('App\PageType', 'type_id', 'id');
+        return $this->morphTo();
     }
 
     public function images()
     {
         return $this->morphToMany('App\Image', 'imageable');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Tag', 'taggable');
     }
 
     public function loadImage($source, $imageData = [])

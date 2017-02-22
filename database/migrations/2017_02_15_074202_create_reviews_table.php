@@ -22,7 +22,6 @@ class CreateReviewsTable extends Migration
             $table->string('link_to_review')->nullable();
             $table->string('link_to_project')->nullable();
             $table->string('link_to_profile')->nullable();
-            $table->string('avatar')->nullable();
             $table->integer('portfolio_work_id')->nullable()->unsigned();
             $table->timestamps();
         });

@@ -8,9 +8,9 @@ class PortfolioWork extends Model
 {
     protected $table = 'portfolio_works';
 
-    public function images()
+    public function page()
     {
-        return $this->morphToMany('App\Image', 'imageable');
+        return $this->morphOne('App\page', 'pageable');
     }
 
     public function review()
@@ -23,8 +23,4 @@ class PortfolioWork extends Model
 //        return $this->belongsTo('App\PortfolioCategory', 'category_id', 'id');
 //    }
 
-    public function tags()
-    {
-        return $this->morphToMany('App\Tag', 'taggable');
-    }
 }

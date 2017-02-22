@@ -33,13 +33,6 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
     ];
 });
 
-// PageType
-$factory->define(App\PageType::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->sentence(1, true),
-    ];
-});
-
 // Feedback
 $factory->define(App\Feedback::class, function (Faker\Generator $faker) {
     return [
