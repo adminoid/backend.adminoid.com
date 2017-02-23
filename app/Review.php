@@ -10,4 +10,9 @@ class Review extends Model
     {
         return $this->belongsTo('App\PortfolioWork', 'portfolio_work_id', 'id');
     }
+
+    public function page()
+    {
+        return $this->morphOne('App\page', 'pageable');
+    }
 }

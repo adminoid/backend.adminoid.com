@@ -106,12 +106,31 @@ class RelationshipsTest extends TestCase
 
     public function testPagePortfolioWorkRelation()
     {
-        $portfolioWork = factory(App\News::class)->make();
+        $portfolioWork = factory(App\PortfolioWork::class)->make();
         $portfolioWork->save();
         $page = factory(App\Page::class)->make();
         $page->pageable()->associate($portfolioWork);
         $page->save();
         $this->assertEquals($page->pageable->title_ru, $portfolioWork->title_ru);
+    }
+
+    public function testReviewPageRelation()
+    {
+        $review = factory(App\Review::class)->make();
+        $review->save();
+        $page = factory(App\Page::class)->make();
+        $review->page()->save($page);
+        $this->assertEquals($review->page->url, $page->url);
+    }
+
+    public function testPageReviewRelation()
+    {
+        $review = factory(App\Review::class)->make();
+        $review->save();
+        $page = factory(App\Page::class)->make();
+        $page->pageable()->associate($review);
+        $page->save();
+        $this->assertEquals($page->pageable->title_ru, $review->title_ru);
     }
 
 }

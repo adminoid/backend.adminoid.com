@@ -15,14 +15,15 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('content_ru');
-            $table->text('content_en')->nullable();
             $table->string('name')->nullable();
             $table->string('nick')->nullable();
+            $table->text('content_ru');
+            $table->text('content_en')->nullable();
             $table->string('link_to_review')->nullable();
-            $table->string('link_to_project')->nullable();
             $table->string('link_to_profile')->nullable();
+            $table->string('link_to_project')->nullable();
             $table->integer('portfolio_work_id')->nullable()->unsigned();
+            $table->timestamp('published_at');
             $table->timestamps();
         });
     }
