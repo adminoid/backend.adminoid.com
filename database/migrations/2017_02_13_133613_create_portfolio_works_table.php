@@ -22,7 +22,9 @@ class CreatePortfolioWorksTable extends Migration
             $table->integer('sort_order_id')->nullable();
             $table->enum('priority_level', ['high', 'middle', 'low'])->default('low');
             $table->string('external_url')->nullable();
+            $table->string('link')->nullable();
             $table->string('custom_date')->nullable();
+            $table->boolean('custom_face')->default(false);
             $table->timestamps();
         });
     }

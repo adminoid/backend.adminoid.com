@@ -21,7 +21,7 @@ class PageImagesTest extends TestCase
         $child1->makeChildOf($page);
         $child2 = Page::create(['url' => 'child-2']);
         $child2->makeChildOf($child1);
-        $pathTo = $child2->loadImage('database/seeds/images/ikmed-logo-big.jpg', [
+        $pathTo = $child2->loadImage('tests/images/ikmed-logo-big.jpg', [
             'alt_ru' => 'alt RU',
             'alt_en' => 'alt EN',
             'sort_order_id' => 0,
