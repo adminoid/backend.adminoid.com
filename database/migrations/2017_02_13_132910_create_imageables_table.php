@@ -14,9 +14,9 @@ class CreateImageablesTable extends Migration
     public function up()
     {
         Schema::create('imageables', function (Blueprint $table) {
-            $table->integer('image_id')->index();
-            $table->integer('imageable_id')->index();
-            $table->string('imageable_type')->index();
+            $table->integer('image_id');
+            $table->integer('imageable_id');
+            $table->string('imageable_type');
             $table->timestamps();
         });
     }

@@ -32,12 +32,12 @@ class CreatePagesTable extends Migration
             $table->text('content_en')->nullable();
             $table->boolean('show_in_main_menu')->default(true);
             $table->boolean('active')->default(true);
-            $table->integer('parent_id')->nullable()->index();
-            $table->integer('lft')->nullable()->index();
-            $table->integer('rgt')->nullable()->index();
+            $table->integer('parent_id')->nullable();
+            $table->integer('lft')->nullable();
+            $table->integer('rgt')->nullable();
             $table->integer('depth')->nullable();
-            $table->integer('pageable_id')->index()->nullable();
-            $table->string('pageable_type')->index()->nullable();
+            $table->integer('pageable_id')->nullable();
+            $table->string('pageable_type')->nullable();
             // Add needed columns here (f.ex: name, slug, path, etc.)
             // $table->string('name', 255);
 
