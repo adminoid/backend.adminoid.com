@@ -31,13 +31,12 @@
 <body>
 
 <div class="ui right sidebar inverted red vertical menu active" id="top-menu-sidebar">
-    <a href="/" class="item">Главная</a>{{-- Добавить обо мне (сколько лет того, сего) и Перечень услуг--}}
+    <a href="/" class="item">Главная</a>
     <a href="/price.html" class="item active">Цена</a>
     <a href="/tools.html" class="item">Инструменты</a>
-    <a href="/process.html" class="item">Процесс</a>
+    <a href="/workflow.html" class="item">Процесс</a>
     <a href="/portfolio.html" class="item">Портфолио</a>
     <a href="/reviews.html" class="item">Отзывы</a>
-    <a href="/off.html" class="item">Прочь</a>
 </div>
 
 <div id="app" class="pusher">
@@ -227,16 +226,16 @@
 
                     <div class="eleven wide column computer widescreen largescreen only">
                         <div class="ui six item menu">
-                            {{--<a href="/" class="item">--}}
-                               {{--Главная--}}
-                            {{--</a>--}}
+                            <a href="/" class="item">
+                               Главная
+                            </a>
                             <a href="/price.html" class="item active">
                                 Цена
                             </a>
                             <a href="/tools.html" class="item">
                                 Инструменты
                             </a>
-                            <a href="/process.html" class="item">
+                            <a href="/workflow.html" class="item">
                                 Процесс
                             </a>
                             <a href="/portfolio.html" class="item">
@@ -244,9 +243,6 @@
                             </a>
                             <a href="reviews.html" class="item">
                                 Отзывы
-                            </a>
-                            <a href="/off.html" class="item">
-                                Прочь
                             </a>
                         </div>
                     </div>

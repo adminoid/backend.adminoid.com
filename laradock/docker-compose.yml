@@ -16,7 +16,7 @@ services:
         build:
             context: ./workspace
             args:
-                - INSTALL_XDEBUG=false
+                - INSTALL_XDEBUG=true
                 - INSTALL_MONGO=false
                 - INSTALL_NODE=false
                 - INSTALL_YARN=false
@@ -48,7 +48,7 @@ services:
         build:
             context: ./php-fpm
             args:
-                - INSTALL_XDEBUG=false
+                - INSTALL_XDEBUG=true
                 - INSTALL_SOAP=false
                 - INSTALL_MONGO=false
                 - INSTALL_ZIP_ARCHIVE=false

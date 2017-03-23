@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
-Route::get('/process.html', function () {
-    return view('pages.process');
+Route::get('/workflow.html', function () {
+    return view('pages.workflow');
 });
 
 Route::get('/price.html', function () {
