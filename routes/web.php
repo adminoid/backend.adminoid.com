@@ -12,21 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('pages.index');
+    return view('pages.ru.index');
 });
 
 Route::get('/workflow.html', function () {
-    return view('pages.workflow');
+    return view('pages.ru.workflow');
 });
 
 Route::get('/price.html', function () {
-    return view('pages.price');
+    return view('pages.ru.price');
 });
 
 Route::get('/portfolio.html', function () {
-    return view('pages.portfolio');
+    return view('pages.ru.portfolio');
 });
 
 Route::get('/tools.html', function () {
-    return view('pages.tools');
+    return view('pages.ru.tools');
 });

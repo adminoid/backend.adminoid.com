@@ -18,7 +18,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'name_en' => 'Main',
                 'title_ru' => 'Сайт надо? Очень красивый!',
                 'title_en' => 'The site should be? Very beautiful!',
-                'template' => 'pages.index',
+                'template_ru' => 'pages.ru.index',
                 'url' => 'index',
                 'show_in_main_menu' => false,
             ],
@@ -27,7 +27,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'name_en' => 'Price',
                 'title_ru' => 'Выгодная цена за фильтрованный концентрат',
                 'title_en' => 'Reasonable price for the filtered concentrate',
-                'template' => 'pages.price',
+                'template_ru' => 'pages.ru.price',
                 'url' => 'price',
             ],
             [
@@ -35,7 +35,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'name_en' => 'Tools',
                 'title_ru' => 'Инструменты, которые я использую',
                 'title_en' => 'Tools I use',
-                'template' => 'pages.tools',
+                'template_ru' => 'pages.ru.tools',
                 'url' => 'tools',
             ],
             [
@@ -43,7 +43,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'name_en' => 'Workflow',
                 'title_ru' => 'Пример рабочего процесса',
                 'title_en' => 'Example workflow',
-                'template' => 'pages.workflow',
+                'template_ru' => 'pages.ru.workflow',
                 'url' => 'workflow',
             ],
             [
@@ -51,7 +51,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'name_en' => 'Portfolio',
                 'title_ru' => 'Портфолио',
                 'title_en' => 'Portfolio',
-                'template' => 'pages.portfolio',
+                'template_ru' => 'pages.ru.portfolio',
                 'url' => 'portfolio',
             ],
             [
@@ -59,7 +59,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'name_en' => 'Reviews',
                 'title_ru' => 'Отзывы',
                 'title_en' => 'Reviews',
-                'template' => 'pages.reviews',
+                'template_ru' => 'pages.ru.reviews',
                 'url' => 'reviews',
             ],
         ];
