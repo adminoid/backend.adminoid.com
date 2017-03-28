@@ -24,7 +24,7 @@ services:
                 - INSTALL_AEROSPIKE_EXTENSION=false
                 - INSTALL_V8JS_EXTENSION=false
                 - COMPOSER_GLOBAL_INSTALL=false
-                - INSTALL_WORKSPACE_SSH=false
+                - INSTALL_WORKSPACE_SSH=true
                 - INSTALL_LARAVEL_ENVOY=false
                 - INSTALL_DEPLOYER=false
                 - INSTALL_LINUXBREW=false
