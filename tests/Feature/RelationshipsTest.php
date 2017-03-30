@@ -16,12 +16,12 @@ class RelationshipsTest extends TestCase
 
     public function testPagePagesRelation()
     {
-        $root = App\Page::create(['url' => 'root-1']);
-        $root->children()->create(['url' => 'child-1']);
-        $child2 = App\Page::create(['url' => 'child-2']);
+        $root = App\Page::create(['alias' => 'root-1']);
+        $root->children()->create(['alias' => 'child-1']);
+        $child2 = App\Page::create(['alias' => 'child-2']);
         $child2->makeChildOf($root);
         $this->assertEquals($root->children()->count(), 2);
-        $this->assertEquals($child2->parent()->first()->url, 'root-1');
+        $this->assertEquals($child2->parent()->first()->alias, 'root-1');
     }
 
     public function testPagesImagesRelation()
@@ -82,7 +82,7 @@ class RelationshipsTest extends TestCase
         $newsItem->save();
         $page = factory(App\Page::class)->make();
         $newsItem->page()->save($page);
-        $this->assertEquals($newsItem->page->url, $page->url);
+        $this->assertEquals($newsItem->page->alias, $page->alias);
     }
 
     public function testPageNewsRelation()
@@ -101,7 +101,7 @@ class RelationshipsTest extends TestCase
         $portfolioWork->save();
         $page = factory(App\Page::class)->make();
         $portfolioWork->page()->save($page);
-        $this->assertEquals($portfolioWork->page->url, $page->url);
+        $this->assertEquals($portfolioWork->page->alias, $page->alias);
     }
 
     public function testPagePortfolioWorkRelation()
@@ -120,7 +120,7 @@ class RelationshipsTest extends TestCase
         $review->save();
         $page = factory(App\Page::class)->make();
         $review->page()->save($page);
-        $this->assertEquals($review->page->url, $page->url);
+        $this->assertEquals($review->page->alias, $page->alias);
     }
 
     public function testPageReviewRelation()

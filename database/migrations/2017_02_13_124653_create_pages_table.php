@@ -20,7 +20,8 @@ class CreatePagesTable extends Migration
             // Take a look at the model scaffold comments for details.
             // We add indexes on parent_id, lft, rgt columns by default.
             $table->increments('id');
-            $table->string('url');
+            $table->string('alias');
+            $table->string('uri')->unique()->nullable();
             $table->string('name_ru')->nullable();
             $table->string('name_en')->nullable();
             $table->string('title_ru')->nullable();

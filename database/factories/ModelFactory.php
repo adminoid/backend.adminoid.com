@@ -29,7 +29,7 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
         'name_ru' => $faker->sentence(1, true),
         'title_ru' => $faker->sentence(6, true),
         'content_ru' => $faker->paragraph(3, true),
-        'url' => $faker->sentence(1, true),
+        'alias' => $faker->sentence(1, true),
     ];
 });
 

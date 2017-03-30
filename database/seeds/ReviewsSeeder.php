@@ -14,7 +14,7 @@ class ReviewsSeeder extends Seeder
 
         $reviewsData = [
             [
-                'url' => 'p_512719',
+                'alias' => 'p_512719',
                 'name' => 'Виктория Власева',
                 'nick' => 'Gosti_tyt',
                 'content_ru' => 'Нравится работать с этим исполнителем – делает быстро и четко. Продолжаем сотрудничество.',
@@ -26,7 +26,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/user-default-small.png',
             ],
             [
-                'url' => 'p_487787',
+                'alias' => 'p_487787',
                 'name' => 'Виктория Власева',
                 'nick' => 'Gosti_tyt',
                 'content_ru' => 'Спасибо за сотрудничество! Надежный и грамотный специалист.',
@@ -38,7 +38,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/user-default-small.png',
             ],
             [
-                'url' => 'p_483215',
+                'alias' => 'p_483215',
                 'name' => 'Виктория Власева',
                 'nick' => 'Gosti_tyt',
                 'content_ru' => 'Замечательный специалист, работа сделана даже раньше срока и качественно. <br>  
@@ -51,7 +51,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/user-default-small.png',
             ],
             [
-                'url' => 'o_986653',
+                'alias' => 'o_986653',
                 'name' => 'Игорь Варенников',
                 'nick' => 'Igor_Varennikov',
                 'content_ru' => 'Петр очень приятный, грамотный специалист. К сожалению наше сотрудничество закончилось не успев толком начаться, но осталось очень приятное впечатление. Если понадобится что то по Modx буду обращаться.',
@@ -66,7 +66,7 @@ class ReviewsSeeder extends Seeder
 
 
             [
-                'url' => 'o_693422',
+                'alias' => 'o_693422',
                 'name' => 'Ideas-is-power Ideas',
                 'nick' => 'leidea',
                 'content_ru' => 'Петр отличный специалист. Выполнили очень сложный проект на Modx с созданием настраиваемого расписания занятий. К работе относится очень внимательно, выполняет всю работу до конца. Очень доволен. Будем работать дальше.',
@@ -78,7 +78,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/sm_f_4a393b7930b09.gif',
             ],
             [
-                'url' => 'o_654481',
+                'alias' => 'o_654481',
                 'name' => 'roman som',
                 'nick' => 'r-startsev',
                 'content_ru' => 'Петр готовил сайт под ключ для нашей компании. Показал себя очень ответственным, и сделал сайт таким каким мы его хотели видеть. Работой доволен – буду обращаться еще.',
@@ -90,7 +90,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/user-default-small.png',
             ],
             [
-                'url' => 'o_634582',
+                'alias' => 'o_634582',
                 'name' => 'Людмила Кузьмина',
                 'nick' => 'ole108',
                 'content_ru' => 'Заказывали технический аудит сайта (анализ пригодности для продвижения в поисковых системах), поиск причин ошибок и их устранение. Работой довольны: оперативно, профессионально и грамотно. Продолжаем сотрудничество.',
@@ -102,7 +102,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/user-default-small.png',
             ],
             [
-                'url' => 'o_628902',
+                'alias' => 'o_628902',
                 'name' => 'Andrey Medvedev',
                 'nick' => 'usremont',
                 'content_ru' => 'Поработали с Петром!!! )))<br> 
@@ -118,7 +118,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/user-default-small.png',
             ],
             [
-                'url' => 'o_626365',
+                'alias' => 'o_626365',
                 'name' => 'Дмитрий Live',
                 'nick' => 'open_your_eyes',
                 'content_ru' => 'Сотрудничал, +',
@@ -130,7 +130,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/user-default-small.png',
             ],
             [
-                'url' => 'o_611003',
+                'alias' => 'o_611003',
                 'name' => 'Ivan Bezfamilnyj',
                 'nick' => 'Ruspath',
                 'content_ru' => 'Брал консультацию, все ок.',
@@ -143,7 +143,7 @@ class ReviewsSeeder extends Seeder
             ],
 
             [
-                'url' => 'o_592516',
+                'alias' => 'o_592516',
                 'name' => 'Дмитрий Кипренский',
                 'nick' => 'DmitryKeeper',
                 'content_ru' => 'Петр – один из наиболее ответственных специалистов, с которыми приходилось работать. Также, судя по результатам работы, чрезвычайно грамотный программист. <br>
@@ -156,7 +156,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/sm_f_4b5b529bd88c2.jpg',
             ],
             [
-                'url' => 'o_586571',
+                'alias' => 'o_586571',
                 'name' => 'Sergey Ts',
                 'nick' => 'nejik',
                 'content_ru' => 'Очень замечательный и хороший человек. Так же очень хороший программист. Выручил и порядочно выполнил все поставленные цели, в установленные сроки. Цель была создание и доработка шаблона и самого движка Livestreet. Так же исправил все баги с модулями. Во время работы консультировал и давал советы. Проделанной работой очень доволен. Все на высшем уровне. Большое спасибо, буду заказывать еще. Рекомендую!',
@@ -168,7 +168,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/sm_f_4b9bbda34dced.jpg',
             ],
             [
-                'url' => 'o_582584',
+                'alias' => 'o_582584',
                 'name' => 'Vladislav Bosch',
                 'nick' => 'Rossmann',
                 'content_ru' => 'Пётр справился с созданием сайта на отлично, хоть и является начинающим специалистом. Всё чётко, строго по ТЗ, аккуратно, доработки минимальные и выполнены максимально оперативно. Рекомендую, как надёжного и грамотного исполнителя.',
@@ -180,7 +180,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/user-default-small.png',
             ],
             [
-                'url' => 'o_352380',
+                'alias' => 'o_352380',
                 'name' => 'Mark Majorov',
                 'nick' => 'sexleksaker',
                 'content_ru' => 'Приятный человек, хороший PHP специалист. <br>
@@ -195,7 +195,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/sm_f_497331582d172.jpg',
             ],
             [
-                'url' => 'o_335029',
+                'alias' => 'o_335029',
                 'name' => 'Владимир Иванов',
                 'nick' => 'vlaspb',
                 'content_ru' => 'Хороший грамотный специалист в своём деле. <br>
@@ -209,7 +209,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/user-default-small.png',
             ],
             [
-                'url' => 'o_328873',
+                'alias' => 'o_328873',
                 'name' => 'Андрей Макалкин',
                 'nick' => 'STIMIK',
                 'content_ru' => 'Очень понравилось как была выполнена работа, моментально настроил сервер, хотя многим это не удавалось, рекомендую всем этого фрилансера, буду и дальше работать с ним!',
@@ -221,7 +221,7 @@ class ReviewsSeeder extends Seeder
                 'avatar' => 'database/seeds/images/avatars/sm_f_25557caeb903ff47.jpg',
             ],
             [
-                'url' => 'o_327774',
+                'alias' => 'o_327774',
                 'name' => 'Дмитрий Соловей',
                 'nick' => 'DSolovey',
                 'content_ru' => 'Быстро отозвался на проект, так же быстро приступил к выполнению задания. <br> 
@@ -237,11 +237,11 @@ class ReviewsSeeder extends Seeder
             ],
         ];
 
-        $reviewsRootPage = App\Page::where('url', 'reviews')->first();
+        $reviewsRootPage = App\Page::where('alias', 'reviews')->first();
         foreach ($reviewsData as $reviewData) {
             $url = array_shift($reviewData);
             $avatar = array_pop($reviewData);
-            $page = App\Page::create(['url' => str_replace('_', '-', $url)]);
+            $page = App\Page::create(['alias' => str_replace('_', '-', $url)]);
             $page->makeChildOf($reviewsRootPage);
             $page->loadImage($avatar, ['alt_ru' => $reviewData['name'], 'sort_order_id' => 0]);
             $reviewData['published_at'] = \Carbon\Carbon::createFromFormat("d.m.Y в H:i", $reviewData['published_at']);

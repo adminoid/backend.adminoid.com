@@ -33,11 +33,44 @@ class Page extends Node
         return $this->morphToMany('App\Tag', 'taggable');
     }
 
+    public function save(array $options = array())
+    {
+        $changed = $this->isDirty('alias') ? $this->getDirty() : false;
+        $original = $this->getOriginal();
+        parent::save();
+        if ($changed && array_key_exists('alias', $original)) {
+            $pageObject = $this;
+            $oldPath = 'public/images/';
+            $newPath = 'public/images/';
+            foreach ($pageObject->getAncestorsAndSelf() as $item) {
+                if($item->alias != $changed['alias']){
+                    $oldPath .= $item->alias . '/';
+                }else{
+                    $oldPath .= $original['alias'] . '/';
+                }
+                $newPath .= $item->alias . '/';
+            }
+            Storage::disk('base')->move($oldPath, $newPath);
+        }
+    }
+
+    public function delete(array $options = array())
+    {
+        $path = 'public/images/';
+        foreach ($this->getAncestorsAndSelf() as $item) {
+            $path .= $item->alias . '/';
+        }
+        if (Storage::disk('base')->exists($path)) {
+            Storage::disk('base')->deleteDirectory($path);
+        }
+        parent::delete();
+    }
+
     public function loadImage($source, $imageData = [])
     {
         $path = 'images/';
         foreach ($this->getAncestorsAndSelf() as $item) {
-            $path .= $item->url . '/';
+            $path .= $item->alias . '/';
         }
         $ext = pathinfo($source, PATHINFO_EXTENSION);
         $name = basename($source, '.' . $ext);
@@ -68,75 +101,26 @@ class Page extends Node
         return $pathTo;
     }
 
-    public function save(array $options = array())
+    public static function fixAlias($alias)
     {
-        $changed = $this->isDirty('url') ? $this->getDirty() : false;
-        $original = $this->getOriginal();
-        parent::save();
-        if ($changed && array_key_exists('url', $original)) {
-            $pageObject = $this;
-            $oldPath = 'public/images/';
-            $newPath = 'public/images/';
-            foreach ($pageObject->getAncestorsAndSelf() as $item) {
-                if($item->url != $changed['url']){
-                    $oldPath .= $item->url . '/';
-                }else{
-                    $oldPath .= $original['url'] . '/';
-                }
-                $newPath .= $item->url . '/';
-            }
-            Storage::disk('base')->move($oldPath, $newPath);
-        }
+        return \URLify::filter($alias);
     }
 
-    public function delete(array $options = array())
+    public function generateUri()
     {
-        $path = 'public/images/';
+        $path = '';
         foreach ($this->getAncestorsAndSelf() as $item) {
-            $path .= $item->url . '/';
+            $path .= $item->alias . '/';
         }
-        Storage::disk('base')->deleteDirectory($path);
-        parent::delete();
+        if(!$this->isLeaf()) return $path;
+        return rtrim($path, '/') . '.html';
     }
 
-//    protected static function boot()
-//    {
-//
-//        Page::updating(function ($page) {
-//            $original = $page->getOriginal();
-//            if (array_key_exists('url', $original)) {
-//                echo ">>\r";
-//                var_dump('old: ' .$original['url']);
-//                var_dump('new: ' .$page->url);
-//                echo "<<\r";
-//            }
-//
-////            var_dump($page->getOriginal());
-//
-////            if($page->isDirty('url')) {
-////                var_dump($page->isDirty('url'));
-////                var_dump('new: ' . $page->url);
-////            }
-//
-//        });
-//
-////        static::saving(function ($page) {
-////            $original = $page->getOriginal();
-////            var_dump($original["url"]);
-//////            if ($page->url != $original['url']) {
-//////                var_dump($original['url']);
-//////                var_dump($page->url);
-//////            }
-////        });
-////
-////        static::deleting(function ($model) {
-////            var_dump('---deleting---');
-////        });
-//
-//        parent::boot();
-//    }
-
-
+    public function isExistAliasInChildren($alias)
+    {
+        $children = $this->immediateDescendants()->where('alias', $alias)->get();
+        return !!$children->count();
+    }
 
     //////////////////////////////////////////////////////////////////////////////
 
