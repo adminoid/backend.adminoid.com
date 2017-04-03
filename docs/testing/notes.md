@@ -5,3 +5,8 @@ For that need add file to ```database/factories``` like as ```database/factories
 
 ## Links
 <https://code.tutsplus.com/tutorials/testing-laravel-controllers--net-31456>
+
+## Code snippets
+```php
+$this->assertEquals('ru', $this->app->getLocale());
+```

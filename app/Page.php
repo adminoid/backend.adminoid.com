@@ -33,42 +33,43 @@ class Page extends Node
         return $this->morphToMany('App\Tag', 'taggable');
     }
 
-    public function save(array $options = array())
-    {
-        $changed = $this->isDirty('alias') ? $this->getDirty() : false;
-        $original = $this->getOriginal();
-        parent::save();
-        if ($changed && array_key_exists('alias', $original)) {
-            $pageObject = $this;
-            $oldPath = 'public/images/';
-            $newPath = 'public/images/';
-            foreach ($pageObject->getAncestorsAndSelf() as $item) {
-                if($item->alias != $changed['alias']){
-                    $oldPath .= $item->alias . '/';
-                }else{
-                    $oldPath .= $original['alias'] . '/';
-                }
-                $newPath .= $item->alias . '/';
-            }
-            Storage::disk('base')->move($oldPath, $newPath);
-        }
-    }
+//    public function save(array $options = array())
+//    {
+//        $changed = $this->isDirty('alias') ? $this->getDirty() : false;
+//        $original = $this->getOriginal();
+//        if ($changed && array_key_exists('alias', $original)) {
+//            $pageObject = $this;
+//            $oldPath = 'public/images/';
+//            $newPath = 'public/images/';
+//            foreach ($pageObject->getAncestorsAndSelf() as $item) {
+//                if($item->alias != $changed['alias']){
+//                    $oldPath .= $item->alias . '/';
+//                }else{
+//                    $oldPath .= $original['alias'] . '/';
+//                }
+//                $newPath .= $item->alias . '/';
+//            }
+//            Storage::disk('base')->move($oldPath, $newPath);
+//        }
+//        parent::save();
+//    }
 
-    public function delete(array $options = array())
-    {
-        $path = 'public/images/';
-        foreach ($this->getAncestorsAndSelf() as $item) {
-            $path .= $item->alias . '/';
-        }
-        if (Storage::disk('base')->exists($path)) {
-            Storage::disk('base')->deleteDirectory($path);
-        }
-        parent::delete();
-    }
+//    public function delete(array $options = array())
+//    {
+//        $path = 'public/images/';
+//        foreach ($this->getAncestorsAndSelf() as $item) {
+//            $path .= $item->alias . '/';
+//        }
+//        if (Storage::disk('base')->exists($path)) {
+//            Storage::disk('base')->deleteDirectory($path);
+//        }
+//        parent::delete();
+//    }
 
     public function loadImage($source, $imageData = [])
     {
-        $path = 'images/';
+//        $path = 'images/';
+        $path = '';
         foreach ($this->getAncestorsAndSelf() as $item) {
             $path .= $item->alias . '/';
         }
@@ -98,28 +99,10 @@ class Page extends Node
                 Storage::disk('base')->copy($source, $pathTo);
             }
         }
-        return $pathTo;
-    }
-
-    public static function fixAlias($alias)
-    {
-        return \URLify::filter($alias);
-    }
-
-    public function generateUri()
-    {
-        $path = '';
-        foreach ($this->getAncestorsAndSelf() as $item) {
-            $path .= $item->alias . '/';
+        else {
+            abort(422, 'TODO: make processing for external urls');
         }
-        if(!$this->isLeaf()) return $path;
-        return rtrim($path, '/') . '.html';
-    }
-
-    public function isExistAliasInChildren($alias)
-    {
-        $children = $this->immediateDescendants()->where('alias', $alias)->get();
-        return !!$children->count();
+        return $pathTo;
     }
 
     //////////////////////////////////////////////////////////////////////////////
