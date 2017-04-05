@@ -40,10 +40,9 @@ class CreatePagesTable extends Migration
             $table->integer('depth')->nullable();
             $table->integer('pageable_id')->nullable();
             $table->string('pageable_type')->nullable();
-            // Add needed columns here (f.ex: name, slug, path, etc.)
-            // $table->string('name', 255);
-
             $table->timestamps();
+
+            $table->unique(['parent_id', 'alias']);
         });
     }
 
