@@ -16,12 +16,12 @@ class RelationshipsTest extends TestCase
 
     public function testPagePagesRelation()
     {
-        $root = App\Page::create(['alias' => 'root-1']);
-        $root->children()->create(['alias' => 'child-1']);
-        $child2 = App\Page::create(['alias' => 'child-2']);
+        $root = App\Page::create(['slug' => 'root-1']);
+        $root->children()->create(['slug' => 'child-1']);
+        $child2 = App\Page::create(['slug' => 'child-2']);
         $child2->makeChildOf($root);
         $this->assertEquals($root->children()->count(), 2);
-        $this->assertEquals($child2->parent()->first()->alias, 'root-1');
+        $this->assertEquals($child2->parent()->first()->slug, 'root-1');
     }
 
     public function testPagesImagesRelation()

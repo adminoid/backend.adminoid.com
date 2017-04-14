@@ -19,7 +19,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'title_ru' => 'Сайт надо? Очень красивый!',
                 'title_en' => 'The site should be? Very beautiful!',
                 'template_ru' => 'pages.ru.index',
-                'alias' => 'index',
+                'slug' => 'index',
                 'show_in_main_menu' => false,
             ],
             [
@@ -28,7 +28,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'title_ru' => 'Выгодная цена за фильтрованный концентрат',
                 'title_en' => 'Reasonable price for the filtered concentrate',
                 'template_ru' => 'pages.ru.price',
-                'alias' => 'price',
+                'slug' => 'price',
             ],
             [
                 'name_ru' => 'Инструменты',
@@ -36,7 +36,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'title_ru' => 'Инструменты, которые я использую',
                 'title_en' => 'Tools I use',
                 'template_ru' => 'pages.ru.tools',
-                'alias' => 'tools',
+                'slug' => 'tools',
             ],
             [
                 'name_ru' => 'Процесс',
@@ -44,7 +44,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'title_ru' => 'Пример рабочего процесса',
                 'title_en' => 'Example workflow',
                 'template_ru' => 'pages.ru.workflow',
-                'alias' => 'workflow',
+                'slug' => 'workflow',
             ],
             [
                 'name_ru' => 'Портфолио',
@@ -52,7 +52,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'title_ru' => 'Портфолио',
                 'title_en' => 'Portfolio',
                 'template_ru' => 'pages.ru.portfolio',
-                'alias' => 'portfolio',
+                'slug' => 'portfolio',
             ],
             [
                 'name_ru' => 'Отзывы',
@@ -60,7 +60,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
                 'title_ru' => 'Отзывы',
                 'title_en' => 'Reviews',
                 'template_ru' => 'pages.ru.reviews',
-                'alias' => 'reviews',
+                'slug' => 'reviews',
             ],
         ];
 
@@ -134,7 +134,7 @@ class PagesPortfolioWorksWithImagesAndTagsSeeder extends Seeder
 
         $portfolioData = [
             [
-                'alias' => 'online-store-ikmed-ru',
+                'slug' => 'online-store-ikmed-ru',
                 'title_ru' => 'Интернет-магазин "ikmed.ru"',
                 'title_en' => 'Online Store ikmed.ru',
                 'description_ru' => "Backend: 
@@ -168,7 +168,7 @@ SEO-optimization",
                 'tags' => ['laravel', 'php', 'composer', 'javascript', 'jquery', 'git', 'grunt', 'less', 'photoshop', 'twitter bootstrap']
             ],
             [
-                'alias' => 'orders-control-panel-for-ikmed-ru',
+                'slug' => 'orders-control-panel-for-ikmed-ru',
                 'title_ru' => 'Админка заказов для Интернет-магазина "ikmed.ru"',
                 'title_en' => 'Orders control panel for e-shop "ikmed.ru"',
                 'description_ru' => "",
@@ -185,7 +185,7 @@ SEO-optimization",
                 'tags' => ['laravel', 'php', 'javascript', 'ext.js', 'git']
             ],
             [
-                'alias' => 'products-control-panel-for-ikmed-ru',
+                'slug' => 'products-control-panel-for-ikmed-ru',
                 'title_ru' => 'Админка товаров для Интернет-магазина "ikmed.ru"',
                 'title_en' => 'Products control panel for e-shop "ikmed.ru"',
                 'description_ru' => "witter Bootstrap, LESS<br> 
@@ -211,7 +211,7 @@ CRUD/Laravel resource",
                 'tags' => ['laravel', 'php', 'javascript', 'git', 'twitter bootstrap', 'vue.js', 'jquery', 'less']
             ],
             [
-                'alias' => 'prices-control-panel-for-ikmed-ru',
+                'slug' => 'prices-control-panel-for-ikmed-ru',
                 'title_ru' => 'Панель управления ценами и акциями, мониторинг позиций на Яндекс.Маркет для Интернет магазина "ikmed.ru"',
                 'title_en' => 'Prices and stocks (and monitoring positions on Yandex.market) control panel for internet shop "ikmed.ru"',
                 'description_ru' => "Интерактивный интерфейс, при изменении цены (например) – динамически пересчитываются все цифры и определяется позиция на маркете.",
@@ -228,7 +228,7 @@ CRUD/Laravel resource",
                 'tags' => ['laravel', 'php', 'javascript', 'jquery', 'git', 'less']
             ],
             [
-                'alias' => 'transfer-cpa-system',
+                'slug' => 'transfer-cpa-system',
                 'title_ru' => 'Перенос CPA системы на новую платформу',
                 'title_en' => 'Transfer CPA system to a new platform',
                 'description_ru' => "",
@@ -245,7 +245,7 @@ CRUD/Laravel resource",
                 'tags' => ['laravel', 'php', 'javascript', 'vue.js', 'lucidchart', 'jquery', 'git', 'twitter bootstrap', 'less']
             ],
             [
-                'alias' => 'e-shop-multilevel-referral-system',
+                'slug' => 'e-shop-multilevel-referral-system',
                 'title_ru' => 'Разработка Интернет магазина с многоуровневой реферальной системой',
                 'title_en' => 'Development of an E-shop with multilevel referral system',
                 'description_ru' => "",
@@ -263,7 +263,7 @@ CRUD/Laravel resource",
                 'tags' => ['laravel', 'php', 'javascript', 'vue.js', 'git', 'lucidchart']
             ],
             [
-                'alias' => 'accounting-system-google-spreadsheet',
+                'slug' => 'accounting-system-google-spreadsheet',
                 'title_ru' => 'Автоматизированная система учета в Google spreadsheet',
                 'title_en' => 'Automated accounting system in Google spreadsheet',
                 'description_ru' => "",
@@ -288,7 +288,7 @@ CRUD/Laravel resource",
         // title_ru, title_en, description_ru, description_en, sort_order_id,
         // priority_level, external_url, link, custom_date, custom_face
 
-        $portfolioPage = App\Page::where(['alias' => 'portfolio'])->first();
+        $portfolioPage = App\Page::where(['slug' => 'portfolio'])->first();
 
         foreach ($portfolioData as $item) {
             $pageData = array_slice($item, 0, 5, true);
@@ -296,7 +296,8 @@ CRUD/Laravel resource",
             $tags = array_pop($item);
             $images = array_pop($item);
             $page = App\Page::create($pageData);
-            $page->makeChildOf($portfolioPage);
+//            $page->makeChildOf($portfolioPage);
+            $portfolioPage->appendNode($page);
             $portfolioWork = App\PortfolioWork::create($item);
             $portfolioWork->page()->save($page);
             $imageSortOrder = 0;

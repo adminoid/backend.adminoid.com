@@ -67,13 +67,6 @@ $factory->define(App\Review::class, function (Faker\Generator $faker) {
     ];
 });
 
-// PortfolioCategory
-$factory->define(App\PortfolioCategory::class, function (Faker\Generator $faker) {
-    return [
-        'name_ru' => $faker->sentence(1, true),
-    ];
-});
-
 // Tag
 $factory->define(App\Tag::class, function (Faker\Generator $faker) {
     return [

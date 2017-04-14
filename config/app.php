@@ -180,7 +180,6 @@ return [
         /*
          * Additional Service Providers
          */
-        Baum\Providers\BaumServiceProvider::class,
 
     ],
 

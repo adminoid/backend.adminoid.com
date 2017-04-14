@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Kalnoy\Nestedset\NestedSet;
 
 class CreatePagesTable extends Migration
 {
@@ -20,7 +21,7 @@ class CreatePagesTable extends Migration
             // Take a look at the model scaffold comments for details.
             // We add indexes on parent_id, lft, rgt columns by default.
             $table->increments('id');
-            $table->string('alias');
+            $table->string('slug');
             $table->string('uri')->unique()->nullable();
             $table->string('name_ru')->nullable();
             $table->string('name_en')->nullable();
@@ -34,15 +35,12 @@ class CreatePagesTable extends Migration
             $table->text('content_en')->nullable();
             $table->boolean('show_in_main_menu')->default(true);
             $table->boolean('active')->default(true);
-            $table->integer('parent_id')->nullable();
-            $table->integer('lft')->nullable();
-            $table->integer('rgt')->nullable();
-            $table->integer('depth')->nullable();
+            NestedSet::columns($table);
             $table->integer('pageable_id')->nullable();
             $table->string('pageable_type')->nullable();
             $table->timestamps();
 
-            $table->unique(['parent_id', 'alias']);
+            $table->unique(['parent_id', 'slug']);
         });
     }
 
