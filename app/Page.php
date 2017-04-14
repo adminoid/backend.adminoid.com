@@ -14,6 +14,8 @@ class Page extends Model
 
     use NodeTrait;
 
+    protected $fillable = ['slug'];
+
     /**
      * Table name.
      *
