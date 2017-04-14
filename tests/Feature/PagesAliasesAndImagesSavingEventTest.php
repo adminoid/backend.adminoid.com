@@ -11,17 +11,35 @@ use App\Page;
 class PagesAliasesAndImagesSavingEventTest extends TestCase
 {
 
-    use DatabaseTransactions;
+//    use DatabaseTransactions;
 
-    public function testDuplicateExceptionOnCreatePage()
-    {
-        $root = Page::create(['alias' => 'root-test']);
-        $root->children()->create(['alias' => 'child-page-1']);
+//    public function testDuplicateExceptionOnCreatePageAsRoot()
+//    {
+//        $root1 = new Page(['alias' => 'root-test']);
+//        $root1->save();
+//        $this->expectExceptionMessage('alias equal to reserved folder, rename it!');
+//        Page::create(['alias' => 'root-test']);
+//    }
+//
+//    public function testDuplicateExceptionOnCreatePageWithParentId()
+//    {
+//        $root = Page::create(['alias' => 'root-test-1']);
+//        $root->children()->create(['alias' => 'child-page']);
+//        // Protection against duplicate aliases
+//        $this->expectException('Illuminate\Database\QueryException');
+//        $root->children()->create(['alias' => 'child-page']);
+//    }
 
-        $this->expectException('Illuminate\Database\QueryException');
-//        $this->expectExceptionMessage('alias already exist in siblings');
-        $root->children()->create(['alias' => 'child-page-1']);
-    }
+//    public function testRenamingAliasForExistPage()
+//    {
+//        $root = Page::create(['alias' => 'root-test-updating']);
+//        $second = $root->children()->create(['alias' => 'second-alias']);
+//        $third = $second->children()->create(['alias' => 'third-alias']);
+//        $third1 = $second->children()->create(['alias' => 'third-alias-1']);
+//        $fourth = $third->children()->create(['alias' => 'fourth-alias']);
+////        $second->alias = 'new-second-alias';
+////        $second->save();
+//    }
 
 //    public function testLoadImageToPageAndRenameAliasForMovingImage()
 //    {
@@ -38,4 +56,5 @@ class PagesAliasesAndImagesSavingEventTest extends TestCase
 //        ]);
 //        echo $pathTo;
 //    }
+
 }

@@ -7,11 +7,11 @@
 ## Creating
 
 **Reproducing**
-new Page()
-Page::create()
+new Page() { in root and with parent_id }
+Page::create() { in root and with parent_id }
 
 **How detect?**
-original alias is null
+Catch on creating event
 
 **What should be done?**
 Check alias duplicates in siblings
@@ -22,7 +22,7 @@ Check alias duplicates in siblings
 $page->alias = 'new-alias'; $page->save();
 
 **How detect?**
-Original alias is not null
+Catch on updating event
 
 **What should be done?**
 Check alias duplicates in siblings
