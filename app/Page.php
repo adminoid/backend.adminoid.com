@@ -45,12 +45,10 @@ class Page extends Model
         return $this;
     }
 
-    public function updateDescendantsPaths()
+    public function updateDescendantsUri()
     {
-        // Получаем всех потомков в древовидном порядке
-        $descendants = $this->descendants()->defaultOrder()->get();
-        // Данный метод заполняет отношения parent и children
-        $descendants->push($this)->linkNodes()->pop();
+        $id = $this->id;
+        $descendants = Page::descendantsOf($id);
         foreach ($descendants as $model) {
             $model->generateUri()->save();
         }

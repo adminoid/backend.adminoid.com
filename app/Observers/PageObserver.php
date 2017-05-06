@@ -21,7 +21,7 @@ class PageObserver
         static $updating = false;
         if (!$updating && $model->isDirty('uri')) {
             $updating = true;
-            $model->updateDescendantsPaths();
+            $model->updateDescendantsUri();
             $updating = false;
         }
     }
