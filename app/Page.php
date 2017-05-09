@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Kalnoy\Nestedset\NodeTrait;
+use phpDocumentor\Reflection\Types\Array_;
 
 /**
  * Page
@@ -30,7 +31,7 @@ class Page extends Model
 
     public function images()
     {
-        return $this->morphToMany('App\Image', 'imageable');
+        return $this->morphMany('App\Image', 'imageable');
     }
 
     public function tags()
@@ -42,6 +43,9 @@ class Page extends Model
     {
         $slug = $this->slug;
         $this->uri = $this->isRoot() ? $slug : $this->parent->uri . '/' . $slug;
+        foreach ($this->images()->get() as $image) {
+            $image->updateFolder();
+        }
         return $this;
     }
 
@@ -56,24 +60,22 @@ class Page extends Model
 
     public function loadImage($source, $imageData = [])
     {
-        $path = 'images/';
-        foreach ($this->getAncestors() as $item) {
-            $path .= $item->slug . '/';
-        }
-        $path .= $this->slug . '/';
+        $folder = $this->getImageFolder();
+
         $ext = pathinfo($source, PATHINFO_EXTENSION);
         $name = basename($source, '.' . $ext);
         $imageData = array_merge(
             $imageData,
             [
-                'path' => $path,
+                'folder' => $folder,
                 'name' => $name,
                 'ext' => $ext,
             ]
         );
+
         $image = Image::create($imageData);
         $this->images()->save($image);
-        $pathTo = 'public/' . $path . $name . '.' . $ext;
+        $pathTo = $folder . '/' . $name . '.' . $ext;
         $isHttp = preg_match('#^https?://#i', $source);
         $sourceSize = Storage::disk('base')->getSize($source);
         if (!$isHttp) {
@@ -90,6 +92,11 @@ class Page extends Model
             abort(422, 'TODO: make processing for external urls');
         }
         return $pathTo;
+    }
+
+    public function getImageFolder($uri = '')
+    {
+        return ($uri) ? 'public/images/' . $uri : 'public/images/' . $this->uri;
     }
 
 //    public function save(array $options = array())

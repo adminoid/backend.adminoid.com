@@ -17,7 +17,8 @@ class PagesAliasesAndImagesSavingEventTest extends TestCase
     {
         $root1 = new Page(['slug' => 'root-test']);
         $root1->save();
-        $this->expectExceptionMessage('slug equal to reserved folder, rename it!');
+        $this->expectExceptionCode(23000);
+        $this->expectException('Illuminate\Database\QueryException');
         Page::create(['slug' => 'root-test']);
     }
 
@@ -46,20 +47,23 @@ class PagesAliasesAndImagesSavingEventTest extends TestCase
         $this->assertEquals(Page::find($fourth->id)->uri, 'root-test-updating/second-slug-renamed/third-slug/fourth-slug');
     }
 
-//    public function testLoadImageToPageAndRenameSlugForMovingImage()
-//    {
-//        $root = Page::create(['slug' => 'root-test-image']);
-//        $child1 = Page::create(['slug' => 'child-page-image']);
-//        $root->appendNode($child1);
-//
-//        $child2 = Page::create(['slug' => 'third-level-page']);
-//        $child1->appendNode($child2);
-//        $pathTo = $child2->loadImage('tests/images/ikmed-logo-big.jpg', [
-//            'alt_ru' => 'alt RU',
-//            'alt_en' => 'alt EN',
-//            'sort_order_id' => 0,
-//        ]);
-//        echo $pathTo;
-//    }
+    public function testLoadImageToPageAndRenameSlugForMovingImage()
+    {
+        $root = Page::create(['slug' => 'root-test-image']);
+        $child1 = Page::create(['slug' => 'child-page-image']);
+        $root->appendNode($child1);
+        $child2 = Page::create(['slug' => 'third-level-page']);
+        $child1->appendNode($child2);
+        $pathTo = $child2->loadImage('tests/images/ikmed-logo-big.jpg', [
+            'alt_ru' => 'alt RU',
+            'alt_en' => 'alt EN',
+            'sort_order_id' => 0,
+        ]);
+
+        $child1->slug = 'child-page-renamed';
+        $child1->save();
+
+        echo $pathTo;
+    }
 
 }

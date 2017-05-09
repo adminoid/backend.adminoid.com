@@ -10,7 +10,8 @@ class PageObserver
     public function saving(Page $model)
     {
         if ($model->isDirty('slug', 'parent_id')) {
-            $model->generateUri();
+            $original = $model->getOriginal();
+            $model->generateUri($original);
         }
     }
 

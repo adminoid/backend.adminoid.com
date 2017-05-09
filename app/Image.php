@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
 
-    protected $fillable = ['path', 'name', 'ext', 'alt_ru', 'alt_en', 'sort_order_id'];
+    protected $fillable = ['folder', 'name', 'ext', 'alt_ru', 'alt_en', 'sort_order_id'];
 
 //    public function __construct($imageForUploading = null, array $attributes = array())
 //    {
@@ -15,8 +15,13 @@ class Image extends Model
 //        parent::__construct($attributes);
 //    }
 
-    public function pages()
+    public function imageable()
     {
-        return $this->morphedByMany('App\Page', 'imageable');
+        return $this->morphTo();
+    }
+
+    public function updateFolder()
+    {
+
     }
 }

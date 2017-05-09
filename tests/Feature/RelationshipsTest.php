@@ -17,7 +17,6 @@ class RelationshipsTest extends TestCase
 {
 
     use DatabaseTransactions;
-//    use DatabaseMigrations;
 
     public function testPagePagesRelation()
     {
@@ -29,23 +28,13 @@ class RelationshipsTest extends TestCase
         $this->assertEquals($child2->parent()->first()->slug, 'root-1');
     }
 
-    public function testPagesImagesRelation()
+    public function testPageImagesRelation()
     {
         $pages = factory(Page::class, 3)->create();
         $images = factory(Image::class, 2)->create();
         $pages->each(function ($page) use ($images) {
             $page->images()->saveMany($images);
             $this->assertEquals($page->images()->count(), 2);
-        });
-    }
-
-    public function testImagesPagesRelation()
-    {
-        $images = factory(Image::class, 2)->create();
-        $pages = factory(Page::class, 3)->create();
-        $images->each(function ($image) use ($pages) {
-            $image->pages()->saveMany($pages);
-            $this->assertEquals($image->pages()->count(), 3);
         });
     }
 
