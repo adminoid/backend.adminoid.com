@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Page;
 use App\Observers\PageObserver;
+use App\Image;
+use App\Observers\ImageObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Page::observe(PageObserver::class);
+        Image::observe(ImageObserver::class);
     }
 
     /**

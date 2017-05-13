@@ -20,8 +20,23 @@ class Image extends Model
         return $this->morphTo();
     }
 
-    public function updateFolder()
-    {
+//    public function delete(array $options = array())
+//    {
+//        $folder = $this->folder;
+//        $path = $folder . '/' . $this->name . '.' . $this->ext();
+//        echo $path;
+//        parent::delete();
+//    }
 
-    }
+    // this is a recommended way to declare event handlers
+//    protected static function boot()
+//    {
+//        parent::boot();
+//
+//        static::deleting(function ($image) { // before delete() method call this
+//            $folder = $image->folder;
+//            echo $folder;
+//            // do the rest of the cleanup...
+//        });
+//    }
 }

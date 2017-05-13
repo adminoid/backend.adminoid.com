@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Page;
+use Illuminate\Support\Facades\Storage;
 
 class PagesAliasesAndImagesSavingEventTest extends TestCase
 {
@@ -54,16 +55,23 @@ class PagesAliasesAndImagesSavingEventTest extends TestCase
         $root->appendNode($child1);
         $child2 = Page::create(['slug' => 'third-level-page']);
         $child1->appendNode($child2);
-        $pathTo = $child2->loadImage('tests/images/ikmed-logo-big.jpg', [
+        $child2->loadImage('tests/images/ikmed-logo-big.jpg', [
             'alt_ru' => 'alt RU',
             'alt_en' => 'alt EN',
             'sort_order_id' => 0,
         ]);
-
+        $this->assertTrue(Storage::disk('base')->exists('public/images/root-test-image/child-page-image/third-level-page/ikmed-logo-big.jpg'));
+        $this->assertFalse(Storage::disk('base')->exists('public/images/root-test-image/child-page-renamed/third-level-page/ikmed-logo-big.jpg'));
         $child1->slug = 'child-page-renamed';
         $child1->save();
+        $this->assertFalse(Storage::disk('base')->exists('public/images/root-test-image/child-page-image/third-level-page/ikmed-logo-big.jpg'));
+        $this->assertTrue(Storage::disk('base')->exists('public/images/root-test-image/child-page-renamed/third-level-page/ikmed-logo-big.jpg'));
 
-        echo $pathTo;
+//        foreach ($child2->images()->get() as $image) {
+//            $image->delete();
+//        }
+        $child1->delete();
+        $this->assertFalse(Storage::disk('base')->exists('public/images/root-test-image/child-page-renamed/third-level-page/ikmed-logo-big.jpg'));
     }
 
 }

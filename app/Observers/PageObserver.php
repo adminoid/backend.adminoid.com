@@ -7,24 +7,35 @@ use App\Page;
 class PageObserver
 {
 
-    public function saving(Page $model)
+    public function saving(Page $page)
     {
-        if ($model->isDirty('slug', 'parent_id')) {
-            $original = $model->getOriginal();
-            $model->generateUri($original);
+        if ($page->isDirty('slug', 'parent_id')) {
+            $original = $page->getOriginal();
+            $page->generateUri($original);
         }
     }
 
-    public function saved(Page $model)
+    public function saved(Page $page)
     {
         // Данная переменная нужна для того, чтобы потомки не начали вызывать
         // метод, т.к. для них путь также изменится
         static $updating = false;
-        if (!$updating && $model->isDirty('uri')) {
+        if (!$updating && $page->isDirty('uri')) {
             $updating = true;
-            $model->updateDescendantsUri();
+            $page->updateDescendantsUri();
             $updating = false;
         }
     }
 
+    public function deleting(Page $page)
+    {
+        $id = $page->id;
+        $descendants = Page::descendantsOf($id);
+        foreach ($descendants as $page) {
+            foreach ($page->images()->get() as $image) {
+                $image->delete();
+            }
+        }
+
+    }
 }

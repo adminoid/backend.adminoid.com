@@ -43,8 +43,10 @@ class Page extends Model
     {
         $slug = $this->slug;
         $this->uri = $this->isRoot() ? $slug : $this->parent->uri . '/' . $slug;
+        $folder = $this->getImageFolder();
         foreach ($this->images()->get() as $image) {
-            $image->updateFolder();
+            $image->folder = $folder;
+            $image->save();
         }
         return $this;
     }
@@ -53,8 +55,8 @@ class Page extends Model
     {
         $id = $this->id;
         $descendants = Page::descendantsOf($id);
-        foreach ($descendants as $model) {
-            $model->generateUri()->save();
+        foreach ($descendants as $page) {
+            $page->generateUri()->save();
         }
     }
 
@@ -73,12 +75,13 @@ class Page extends Model
             ]
         );
 
-        $image = Image::create($imageData);
-        $this->images()->save($image);
+//        $image = Image::create($imageData);
+//        $this->images()->save($image);
+        $this->images()->create($imageData);
         $pathTo = $folder . '/' . $name . '.' . $ext;
         $isHttp = preg_match('#^https?://#i', $source);
-        $sourceSize = Storage::disk('base')->getSize($source);
         if (!$isHttp) {
+            $sourceSize = Storage::disk('base')->getSize($source);
             $exists = Storage::disk('base')->has($pathTo);
             if ($exists) {
                 if ($sourceSize != Storage::disk('base')->getSize($pathTo)) {
@@ -98,42 +101,5 @@ class Page extends Model
     {
         return ($uri) ? 'public/images/' . $uri : 'public/images/' . $this->uri;
     }
-
-//    public function save(array $options = array())
-//    {
-//        $changed = $this->isDirty('alias') ? $this->getDirty() : false;
-//        $original = $this->getOriginal();
-//        if ($changed && array_key_exists('alias', $original)) {
-//            $pageObject = $this;
-//            $oldPath = 'public/images/';
-//            $newPath = 'public/images/';
-//            foreach ($pageObject->getAncestorsAndSelf() as $item) {
-//                if($item->alias != $changed['alias']){
-//                    $oldPath .= $item->alias . '/';
-//                }else{
-//                    $oldPath .= $original['alias'] . '/';
-//                }
-//                $newPath .= $item->alias . '/';
-//            }
-//            Storage::disk('base')->move($oldPath, $newPath);
-//        }
-//        parent::save();
-//    }
-
-//    public function delete(array $options = array())
-//    {
-//        $path = 'public/images/';
-//        foreach ($this->getAncestorsAndSelf() as $item) {
-//            $path .= $item->alias . '/';
-//        }
-//        if (Storage::disk('base')->exists($path)) {
-//            Storage::disk('base')->deleteDirectory($path);
-//        }
-//        parent::delete();
-//    }
-
-
-
-
 
 }

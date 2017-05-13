@@ -21,7 +21,7 @@ class CreateImagesTable extends Migration
             $table->string('alt_ru')->nullable();
             $table->string('alt_en')->nullable();
             $table->integer('sort_order_id')->nullable();
-            $table->integer('imageable_id')->nullable();
+            $table->integer('imageable_id')->nullable()->unsigned();
             $table->string('imageable_type')->nullable();
             $table->timestamps();
         });

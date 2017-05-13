@@ -20,12 +20,12 @@ class RelationshipsTest extends TestCase
 
     public function testPagePagesRelation()
     {
-        $root = Page::create(['slug' => 'root-1']);
+        $root = Page::create(['slug' => 'root-10']);
         $root->children()->create(['slug' => 'child-1']);
         $child2 = Page::create(['slug' => 'child-2']);
         $root->appendNode($child2);
         $this->assertEquals($root->children()->count(), 2);
-        $this->assertEquals($child2->parent()->first()->slug, 'root-1');
+        $this->assertEquals($child2->parent()->first()->slug, 'root-10');
     }
 
     public function testPageImagesRelation()
@@ -35,6 +35,18 @@ class RelationshipsTest extends TestCase
         $pages->each(function ($page) use ($images) {
             $page->images()->saveMany($images);
             $this->assertEquals($page->images()->count(), 2);
+        });
+    }
+
+    public function testImagesPageRelation()
+    {
+        $images = factory(Image::class, 2)->create();
+        $page = factory(Page::class)->make();
+        $page->save();
+        $images->each(function ($image) use ($page) {
+            $name = $page->slug;
+            $page->images()->save($image);
+            $this->assertEquals($name, $image->imageable->slug);
         });
     }
 
