@@ -3,6 +3,6 @@
 ## Docs for project
 
 
-- [localization](docs/localization.md).
+- [localization](localization.md).
 
 
