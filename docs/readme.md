@@ -2,7 +2,5 @@
 
 ## Docs for project
 
-
 - [localization](localization/localization.md).
-
 
