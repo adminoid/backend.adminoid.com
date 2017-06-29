@@ -1,3 +1,8 @@
+<p align="center"><img src="https://adminoid.com/static/img/adminoid/adminoid-logo.svg"></p>
+
+# Info about project
+[Docs](docs)
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
